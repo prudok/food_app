@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'core/constants/device_size/device.dart';
 import 'features/home/presentation/bloc/home_bloc.dart';
 import 'features/home/presentation/views/home_view.dart';
 
@@ -9,6 +10,8 @@ class FoodApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Device().init(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: BlocProvider(

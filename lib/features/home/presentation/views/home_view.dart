@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../core/constants/app_colors/app_colors.dart';
-import '../../../../core/constants/asset_paths/asset_paths.dart';
 import '../../../../core/constants/device_size/device.dart';
-import '../../../../core/constants/text_styles/app_text_styles.dart';
 import '../bloc/home_bloc.dart';
+import '../widgets/list_views/category_list_view.dart';
+import '../widgets/shimmers/shimmer_list_view.dart';
+import '../widgets/titles/geo_data_title.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -13,57 +16,26 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final homeBloc = context.watch<HomeBloc>();
-    Device().init(context);
+    initializeDateFormatting();
 
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppColors.white,
-        title: const GeoDataTitle(),
+        title: GeoDataTitle(
+          cityName: 'Санкт-Петербург',
+          date: DateFormat.yMMMMd('ru').format(DateTime.now()),
+        ),
         actions: [
           const AppBarAvatar(),
-          SizedBox(width: MediaQuery.of(context).size.width * 0.02),
+          SizedBox(width: Device.width! * 0.02),
         ],
       ),
       body: homeBloc.state.maybeWhen(
-        loading: () => const Center(
-          child: CircularProgressIndicator(),
-        ),
+        loading: () => const ShimmerListView(),
         loaded: (categoryList) {
-          return SizedBox(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            child: ListView.separated(
-              itemCount: categoryList.categories.length,
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              itemBuilder: (context, index) {
-                return Container(
-                  height: 148,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(
-                        categoryList.categories[index].imageUrl,
-                      ),
-                    ),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16, top: 12),
-                    child: Text(
-                      categoryList.categories[index].name,
-                      style: AppTextStyles.titleSmall,
-                    ),
-                  ),
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return SizedBox(height: 15);
-              },
-            ),
-          );
+          return CategoryListView(categoryList: categoryList,);
         },
         orElse: () => const Text('Error'),
       ),
@@ -89,39 +61,6 @@ class AppBarAvatar extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ),
-    );
-  }
-}
-
-class GeoDataTitle extends StatelessWidget {
-  const GeoDataTitle({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Image.asset(AssetPaths.location),
-        SizedBox(width: Device.width! * 0.03),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Санкт-Петерубрг',
-              style: AppTextStyles.bodyBig.copyWith(
-                color: AppColors.black,
-              ),
-            ),
-            Text(
-              '12 Августа, 2023',
-              style: AppTextStyles.bodySmall.copyWith(
-                color: AppColors.grey,
-              ),
-            ),
-          ],
-        ),
-      ],
     );
   }
 }
