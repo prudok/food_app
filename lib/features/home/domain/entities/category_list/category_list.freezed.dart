@@ -20,6 +20,7 @@ CategoryList _$CategoryListFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CategoryList {
+// IMPORTANT: first letter of JsonKey is a russian letter 'с'
   @JsonKey(name: 'сategories')
   List<CategoryItem> get categories => throw _privateConstructorUsedError;
 
@@ -106,7 +107,9 @@ class _$_CategoryList implements _CategoryList {
   factory _$_CategoryList.fromJson(Map<String, dynamic> json) =>
       _$$_CategoryListFromJson(json);
 
+// IMPORTANT: first letter of JsonKey is a russian letter 'с'
   final List<CategoryItem> _categories;
+// IMPORTANT: first letter of JsonKey is a russian letter 'с'
   @override
   @JsonKey(name: 'сategories')
   List<CategoryItem> get categories {
@@ -156,7 +159,7 @@ abstract class _CategoryList implements CategoryList {
   factory _CategoryList.fromJson(Map<String, dynamic> json) =
       _$_CategoryList.fromJson;
 
-  @override
+  @override // IMPORTANT: first letter of JsonKey is a russian letter 'с'
   @JsonKey(name: 'сategories')
   List<CategoryItem> get categories;
   @override

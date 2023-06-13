@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app/features/category/presentation/bloc/category_bloc.dart';
+import 'package:food_app/features/category/presentation/views/category_view.dart';
 
 import 'core/constants/device_size/device.dart';
 import 'features/home/presentation/bloc/home_bloc.dart';
@@ -14,10 +16,18 @@ class FoodApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BlocProvider(
-        create: (context) => HomeBloc(),
-        child: const HomeView(),
-      )
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (BuildContext context) => HomeBloc(),
+          ),
+          BlocProvider(
+            create: (BuildContext context) => CategoryBloc(),
+          ),
+        ],
+        child: const CategoryView()
+        // child: const HomeView(),
+      ),
     );
   }
 }
