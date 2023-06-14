@@ -1,21 +1,12 @@
-import 'dart:convert';
+import 'package:dio/dio.dart';
 
-import 'package:http/http.dart' as http;
-
-import '../../../../core/constants/api/api_constants.dart';
 import '../../domain/entities/category_list/category_list.dart';
 import 'home_api.dart';
 
-class HomeAPIImpl extends HomeAPI {
-  final uri = Uri.https(APIConstants.baseUrl, APIConstants.categoriesPath);
+class HomeAPIImpl {
+  final client = HomeAPI(Dio());
 
-  @override
   Future<CategoryList> loadCategories() {
-    var response = http.get(uri);
-    return response.then(
-      (categories) => CategoryList.fromJson(
-        jsonDecode(categories.body),
-      ),
-    );
+    return client.loadCategories().then((categories) => categories);
   }
 }

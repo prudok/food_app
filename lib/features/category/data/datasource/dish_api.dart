@@ -6,10 +6,10 @@ import '../../domain/entities/dish_list.dart/dish_list.dart';
 
 part 'dish_api.g.dart';
 
-@RestApi(baseUrl: 'https://${APIConstants.baseUrl}')
+@RestApi(baseUrl: APIConstants.baseUrl)
 abstract class DishAPI {
   factory DishAPI(Dio dio, {String baseUrl}) = _DishAPI;
 
-  @GET('/${APIConstants.dishesPath}')
+  @GET(APIConstants.dishesPath)
   Future<DishList> loadDishes();
 }

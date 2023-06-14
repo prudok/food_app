@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app/core/constants/asset_paths/asset_paths.dart';
-import 'package:food_app/core/constants/device_size/device.dart';
-import 'package:food_app/core/constants/text_styles/app_text_styles.dart';
-import 'package:food_app/features/category/presentation/bloc/category_bloc.dart';
 
 import '../../../../core/constants/app_colors/app_colors.dart';
+import '../../../../core/constants/asset_paths/asset_paths.dart';
+import '../../../../core/constants/device_size/device.dart';
+import '../../../../core/constants/text_styles/app_text_styles.dart';
+import '../bloc/category_bloc.dart';
 
 class CategoryView extends StatelessWidget {
   const CategoryView({super.key});
@@ -15,6 +15,7 @@ class CategoryView extends StatelessWidget {
     final categoryBloc = context.watch<CategoryBloc>();
 
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
@@ -33,21 +34,56 @@ class CategoryView extends StatelessWidget {
       ),
       body: categoryBloc.state.maybeWhen(
         loading: () => const Center(child: CircularProgressIndicator()),
-        orElse: () => const Text('Error'),
         loaded: (dishList) {
           return ListView(
             children: [
-              CategoryRow(),
+              const CategoryRow(),
               // DishItem
-              Container(
-                color: AppColors.lightGrey,
-                height: 100,
-                width: 100,
-                child: Text(dishList.dishes[0].description),
+              GridView.builder(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 19,
+                  vertical: 16,
+                ),
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 29,
+                  crossAxisSpacing: 8,
+                ),
+                itemCount: dishList.dishes.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        fit: FlexFit.loose,
+                        child: Container(
+                          height: 109,
+                          width: 109,
+                          padding: const EdgeInsets.all(8),
+                          decoration: const BoxDecoration(
+                            color: AppColors.backgroundLighGrey,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                          child: Image.network(
+                            dishList.dishes[index].imageUrl,
+                            fit: BoxFit.scaleDown,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        dishList.dishes[index].name,
+                        style: AppTextStyles.bodySmall,
+                      ),
+                    ],
+                  );
+                },
               ),
             ],
           );
         },
+        orElse: () => const Text('Error'),
       ),
     );
   }
