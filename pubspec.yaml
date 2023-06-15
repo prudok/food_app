@@ -76,6 +76,8 @@ flutter:
     - assets/images/profile_circle.png
     - assets/images/search_normal.png
     - assets/images/back_button.png
+    - assets/images/favorite.png
+    - assets/images/close.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
