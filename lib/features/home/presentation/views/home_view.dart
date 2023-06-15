@@ -14,7 +14,6 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final homeBloc = context.watch<HomeBloc>();
-    initializeDateFormatting();
 
     return Scaffold(
       backgroundColor: AppColors.white,

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app/features/cart/domain/entities/user_item/user_cart_item.dart';
+import 'package:food_app/features/cart/presentation/bloc/cart_bloc.dart';
 
 import '../../../../../core/constants/app_colors/app_colors.dart';
 import '../../../../../core/constants/asset_paths/asset_paths.dart';
@@ -78,6 +81,8 @@ class DishAboutDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartBloc = context.watch<CartBloc>();
+
     return AlertDialog(
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -189,6 +194,16 @@ class DishAboutDialog extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.pop(context);
+                cartBloc.add(
+                  CartEvent.addToCart(
+                    item: UserCartItem(
+                      id: dish.id,
+                      name: dish.name,
+                      price: dish.price,
+                      weight: dish.weight,
+                    ),
+                  ),
+                );
               },
               child: const Text(
                 'Добавить в корзину',

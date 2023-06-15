@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app/features/cart/presentation/views/cart_view.dart';
 
 import '../../../../core/constants/app_colors/app_colors.dart';
 import '../../../../core/constants/device_size/device.dart';
@@ -8,14 +9,9 @@ import '../bloc/category_bloc.dart';
 import '../widgets/app_bars/category_app_bar.dart';
 import '../widgets/grid_views/dish_grid_view.dart';
 
-class CategoryView extends StatefulWidget {
+class CategoryView extends StatelessWidget {
   const CategoryView({super.key});
 
-  @override
-  State<CategoryView> createState() => _CategoryViewState();
-}
-
-class _CategoryViewState extends State<CategoryView> {
   @override
   Widget build(BuildContext context) {
     final categoryBloc = context.watch<CategoryBloc>();
@@ -23,6 +19,17 @@ class _CategoryViewState extends State<CategoryView> {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: const CategoryAppBar(),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.shop),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => const CartView(),
+            ),
+          );
+        },
+      ),
       body: categoryBloc.state.maybeWhen(
         loading: () => const Center(child: CircularProgressIndicator()),
         loaded: (dishList) {
