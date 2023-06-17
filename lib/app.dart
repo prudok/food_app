@@ -7,6 +7,7 @@ import 'features/category/presentation/bloc/category_bloc.dart';
 import 'features/category/presentation/bloc/sorting_bloc/sorting_bloc.dart';
 import 'features/category/presentation/views/category_view.dart';
 import 'features/home/presentation/bloc/home_bloc.dart';
+import 'features/home/presentation/views/home_view.dart';
 
 class FoodApp extends StatelessWidget {
   const FoodApp({super.key});
@@ -15,7 +16,7 @@ class FoodApp extends StatelessWidget {
   Widget build(BuildContext context) {
     initializeDateFormatting();
 
-    return MultiBlocProvider(
+   return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => HomeBloc()),
         BlocProvider(create: (context) => CategoryBloc()),

@@ -48,7 +48,7 @@ class CartView extends StatelessWidget {
                                       width: 50,
                                       height: 50,
                                       child: Image.network(
-                                        userCart.items![index]!.imageUrl,
+                                        userCart.items![index][0].imageUrl,
                                       ),
                                     ),
                                   ),
@@ -58,18 +58,18 @@ class CartView extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        userCart.items![index]!.name,
+                                        userCart.items![index][0].name,
                                         style: AppTextStyles.bodySmall,
                                       ),
                                       Row(
                                         children: [
                                           Text(
-                                            '${userCart.items![index]!.price}р',
+                                            '${userCart.items![index][0].price}р',
                                             style: AppTextStyles.bodySmall,
                                           ),
                                           const Text(' * '),
                                           Text(
-                                            '${userCart.items![index]!.weight}г',
+                                            '${userCart.items![index][0].weight}г',
                                             style: AppTextStyles.bodySmall
                                                 .copyWith(
                                               color: AppColors.grey,
@@ -92,7 +92,7 @@ class CartView extends StatelessWidget {
                                       onPressed: () {},
                                       icon: const Icon(Icons.add),
                                     ),
-                                    const Text('1'),
+                                    Text('${userCart.items![index].length}'),
                                     IconButton(
                                       onPressed: () {},
                                       icon: const Icon(Icons.remove),

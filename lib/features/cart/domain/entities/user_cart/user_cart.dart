@@ -9,7 +9,7 @@ part 'user_cart.g.dart';
 @Freezed(makeCollectionsUnmodifiable: false)
 class UserCart with _$UserCart {
   factory UserCart({
-    Map<int, UserCartItem>? items,
+    List<List<UserCartItem>>? items,
   }) = _UserCart;
 
   factory UserCart.fromJson(Map<String, Object?> json) => _$UserCartFromJson(json);
