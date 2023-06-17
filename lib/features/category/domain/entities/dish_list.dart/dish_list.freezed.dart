@@ -85,7 +85,7 @@ class __$$_DishListCopyWithImpl<$Res>
   }) {
     return _then(_$_DishList(
       dishes: null == dishes
-          ? _value._dishes
+          ? _value.dishes
           : dishes // ignore: cast_nullable_to_non_nullable
               as List<Dish>,
     ));
@@ -95,18 +95,13 @@ class __$$_DishListCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_DishList with DiagnosticableTreeMixin implements _DishList {
-  const _$_DishList({required final List<Dish> dishes}) : _dishes = dishes;
+  _$_DishList({required this.dishes});
 
   factory _$_DishList.fromJson(Map<String, dynamic> json) =>
       _$$_DishListFromJson(json);
 
-  final List<Dish> _dishes;
   @override
-  List<Dish> get dishes {
-    if (_dishes is EqualUnmodifiableListView) return _dishes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_dishes);
-  }
+  final List<Dish> dishes;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -126,13 +121,13 @@ class _$_DishList with DiagnosticableTreeMixin implements _DishList {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DishList &&
-            const DeepCollectionEquality().equals(other._dishes, _dishes));
+            const DeepCollectionEquality().equals(other.dishes, dishes));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_dishes));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(dishes));
 
   @JsonKey(ignore: true)
   @override
@@ -149,7 +144,7 @@ class _$_DishList with DiagnosticableTreeMixin implements _DishList {
 }
 
 abstract class _DishList implements DishList {
-  const factory _DishList({required final List<Dish> dishes}) = _$_DishList;
+  factory _DishList({required final List<Dish> dishes}) = _$_DishList;
 
   factory _DishList.fromJson(Map<String, dynamic> json) = _$_DishList.fromJson;
 

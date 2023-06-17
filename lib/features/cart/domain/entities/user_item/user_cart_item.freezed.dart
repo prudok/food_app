@@ -24,6 +24,7 @@ mixin _$UserCartItem {
   String get name => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   int get weight => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +38,7 @@ abstract class $UserCartItemCopyWith<$Res> {
           UserCartItem value, $Res Function(UserCartItem) then) =
       _$UserCartItemCopyWithImpl<$Res, UserCartItem>;
   @useResult
-  $Res call({int id, String name, int price, int weight});
+  $Res call({int id, String name, int price, int weight, String imageUrl});
 }
 
 /// @nodoc
@@ -57,6 +58,7 @@ class _$UserCartItemCopyWithImpl<$Res, $Val extends UserCartItem>
     Object? name = null,
     Object? price = null,
     Object? weight = null,
+    Object? imageUrl = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -75,6 +77,10 @@ class _$UserCartItemCopyWithImpl<$Res, $Val extends UserCartItem>
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as int,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -87,7 +93,7 @@ abstract class _$$_UserCartItemCopyWith<$Res>
       __$$_UserCartItemCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, int price, int weight});
+  $Res call({int id, String name, int price, int weight, String imageUrl});
 }
 
 /// @nodoc
@@ -105,6 +111,7 @@ class __$$_UserCartItemCopyWithImpl<$Res>
     Object? name = null,
     Object? price = null,
     Object? weight = null,
+    Object? imageUrl = null,
   }) {
     return _then(_$_UserCartItem(
       id: null == id
@@ -123,6 +130,10 @@ class __$$_UserCartItemCopyWithImpl<$Res>
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as int,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -134,7 +145,8 @@ class _$_UserCartItem with DiagnosticableTreeMixin implements _UserCartItem {
       {required this.id,
       required this.name,
       required this.price,
-      required this.weight});
+      required this.weight,
+      required this.imageUrl});
 
   factory _$_UserCartItem.fromJson(Map<String, dynamic> json) =>
       _$$_UserCartItemFromJson(json);
@@ -147,10 +159,12 @@ class _$_UserCartItem with DiagnosticableTreeMixin implements _UserCartItem {
   final int price;
   @override
   final int weight;
+  @override
+  final String imageUrl;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserCartItem(id: $id, name: $name, price: $price, weight: $weight)';
+    return 'UserCartItem(id: $id, name: $name, price: $price, weight: $weight, imageUrl: $imageUrl)';
   }
 
   @override
@@ -161,7 +175,8 @@ class _$_UserCartItem with DiagnosticableTreeMixin implements _UserCartItem {
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('price', price))
-      ..add(DiagnosticsProperty('weight', weight));
+      ..add(DiagnosticsProperty('weight', weight))
+      ..add(DiagnosticsProperty('imageUrl', imageUrl));
   }
 
   @override
@@ -172,12 +187,15 @@ class _$_UserCartItem with DiagnosticableTreeMixin implements _UserCartItem {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.weight, weight) || other.weight == weight));
+            (identical(other.weight, weight) || other.weight == weight) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, price, weight);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, price, weight, imageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -198,7 +216,8 @@ abstract class _UserCartItem implements UserCartItem {
       {required final int id,
       required final String name,
       required final int price,
-      required final int weight}) = _$_UserCartItem;
+      required final int weight,
+      required final String imageUrl}) = _$_UserCartItem;
 
   factory _UserCartItem.fromJson(Map<String, dynamic> json) =
       _$_UserCartItem.fromJson;
@@ -211,6 +230,8 @@ abstract class _UserCartItem implements UserCartItem {
   int get price;
   @override
   int get weight;
+  @override
+  String get imageUrl;
   @override
   @JsonKey(ignore: true)
   _$$_UserCartItemCopyWith<_$_UserCartItem> get copyWith =>

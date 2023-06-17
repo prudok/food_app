@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants/app_colors/app_colors.dart';
-import '../../../../../core/constants/asset_paths/asset_paths.dart';
-import '../../../../../core/constants/device_size/device.dart';
-import '../../../../../core/constants/text_styles/app_text_styles.dart';
+import '../../../../../core/constants/app_colors.dart';
+import '../../../../../core/constants/asset_paths.dart';
+import '../../../../../core/constants/app_text_styles.dart';
 
 class GeoDataTitle extends StatelessWidget {
   final String cityName;
@@ -16,7 +15,7 @@ class GeoDataTitle extends StatelessWidget {
     return Row(
       children: [
         Image.asset(AssetPaths.location),
-        SizedBox(width: Device.width! * 0.03),
+        const SizedBox(width: 15),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

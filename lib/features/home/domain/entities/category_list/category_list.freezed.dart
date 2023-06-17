@@ -21,6 +21,7 @@ CategoryList _$CategoryListFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CategoryList {
 // IMPORTANT: first letter of JsonKey is a russian letter 'с'
+// ignore: invalid_annotation_target
   @JsonKey(name: 'сategories')
   List<CategoryItem> get categories => throw _privateConstructorUsedError;
 
@@ -108,8 +109,10 @@ class _$_CategoryList implements _CategoryList {
       _$$_CategoryListFromJson(json);
 
 // IMPORTANT: first letter of JsonKey is a russian letter 'с'
+// ignore: invalid_annotation_target
   final List<CategoryItem> _categories;
 // IMPORTANT: first letter of JsonKey is a russian letter 'с'
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'сategories')
   List<CategoryItem> get categories {
@@ -160,6 +163,7 @@ abstract class _CategoryList implements CategoryList {
       _$_CategoryList.fromJson;
 
   @override // IMPORTANT: first letter of JsonKey is a russian letter 'с'
+// ignore: invalid_annotation_target
   @JsonKey(name: 'сategories')
   List<CategoryItem> get categories;
   @override

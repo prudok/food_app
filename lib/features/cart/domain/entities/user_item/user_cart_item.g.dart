@@ -12,6 +12,7 @@ _$_UserCartItem _$$_UserCartItemFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       price: json['price'] as int,
       weight: json['weight'] as int,
+      imageUrl: json['imageUrl'] as String,
     );
 
 Map<String, dynamic> _$$_UserCartItemToJson(_$_UserCartItem instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$_UserCartItemToJson(_$_UserCartItem instance) =>
       'name': instance.name,
       'price': instance.price,
       'weight': instance.weight,
+      'imageUrl': instance.imageUrl,
     };

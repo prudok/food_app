@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/constants/asset_paths/asset_paths.dart';
+import '../../core/constants/asset_paths.dart';
 
 class AppBarAvatar extends StatelessWidget {
   const AppBarAvatar({

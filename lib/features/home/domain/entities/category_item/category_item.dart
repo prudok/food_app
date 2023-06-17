@@ -9,6 +9,7 @@ class CategoryItem with _$CategoryItem {
   const factory CategoryItem({
     required int id,
     required String name,
+    // ignore: invalid_annotation_target
     @JsonKey(name: 'image_url') required String imageUrl,
   }) = _CategoryItem;
 

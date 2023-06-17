@@ -10,17 +10,20 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
+  final HomeAPIImpl homeAPIImpl = HomeAPIImpl();
+  late CategoryItemRepositoryImpl categoryItemRepository;
+  void initBloc() {
+    categoryItemRepository = CategoryItemRepositoryImpl(homeAPIImpl);
+  }
+
   HomeBloc() : super(const HomeState.initial()) {
-    final homeAPI = HomeAPIImpl();
-    final categoryItemRepository = CategoryItemRepositoryImpl(homeAPI);
+    initBloc();
 
-    emit(const HomeState.loading());
-    categoryItemRepository.getItems().then((categoryList) {
-      emit(HomeState.loaded(categoryList: categoryList));
-    });
-
-    on<HomeEvent>((event, emit) {
-      // TODO: implement event handler
+    on<LoadCategories>((event, emit) async {
+      emit(const HomeState.loading());
+      await categoryItemRepository.getItems().then((categoryList) {
+        emit(HomeState.loaded(categoryList: categoryList));
+      });
     });
   }
 }

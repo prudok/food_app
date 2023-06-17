@@ -6,9 +6,9 @@ import '../dish/dish.dart';
 part 'dish_list.freezed.dart';
 part 'dish_list.g.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class DishList with _$DishList {
-  const factory DishList({
+  factory DishList({
     required List<Dish> dishes,
   }) = _DishList;
 

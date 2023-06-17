@@ -11,6 +11,7 @@ class UserCartItem with _$UserCartItem {
     required String name,
     required int price,
     required int weight,
+    required String imageUrl,
   }) = _UserCartItem;
 
   factory UserCartItem.fromJson(Map<String, Object?> json) => _$UserCartItemFromJson(json);

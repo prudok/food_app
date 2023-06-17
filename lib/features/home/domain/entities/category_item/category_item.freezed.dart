@@ -21,7 +21,8 @@ CategoryItem _$CategoryItemFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CategoryItem {
   int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String get name =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'image_url')
   String get imageUrl => throw _privateConstructorUsedError;
 
@@ -132,6 +133,7 @@ class _$_CategoryItem with DiagnosticableTreeMixin implements _CategoryItem {
   final int id;
   @override
   final String name;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'image_url')
   final String imageUrl;
@@ -194,7 +196,7 @@ abstract class _CategoryItem implements CategoryItem {
   int get id;
   @override
   String get name;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'image_url')
   String get imageUrl;
   @override

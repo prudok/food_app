@@ -19,32 +19,38 @@ mixin _$CategoryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() loadCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? loadCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? loadCategory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(LoadCategory value) loadCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(LoadCategory value)? loadCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(LoadCategory value)? loadCategory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -106,6 +112,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() loadCategory,
   }) {
     return started();
   }
@@ -114,6 +121,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? loadCategory,
   }) {
     return started?.call();
   }
@@ -122,6 +130,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? loadCategory,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -134,6 +143,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(LoadCategory value) loadCategory,
   }) {
     return started(this);
   }
@@ -142,6 +152,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(LoadCategory value)? loadCategory,
   }) {
     return started?.call(this);
   }
@@ -150,6 +161,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(LoadCategory value)? loadCategory,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -161,6 +173,108 @@ class _$_Started implements _Started {
 
 abstract class _Started implements CategoryEvent {
   const factory _Started() = _$_Started;
+}
+
+/// @nodoc
+abstract class _$$LoadCategoryCopyWith<$Res> {
+  factory _$$LoadCategoryCopyWith(
+          _$LoadCategory value, $Res Function(_$LoadCategory) then) =
+      __$$LoadCategoryCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadCategoryCopyWithImpl<$Res>
+    extends _$CategoryEventCopyWithImpl<$Res, _$LoadCategory>
+    implements _$$LoadCategoryCopyWith<$Res> {
+  __$$LoadCategoryCopyWithImpl(
+      _$LoadCategory _value, $Res Function(_$LoadCategory) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadCategory implements LoadCategory {
+  const _$LoadCategory();
+
+  @override
+  String toString() {
+    return 'CategoryEvent.loadCategory()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadCategory);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() loadCategory,
+  }) {
+    return loadCategory();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? loadCategory,
+  }) {
+    return loadCategory?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? loadCategory,
+    required TResult orElse(),
+  }) {
+    if (loadCategory != null) {
+      return loadCategory();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(LoadCategory value) loadCategory,
+  }) {
+    return loadCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(LoadCategory value)? loadCategory,
+  }) {
+    return loadCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(LoadCategory value)? loadCategory,
+    required TResult orElse(),
+  }) {
+    if (loadCategory != null) {
+      return loadCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadCategory implements CategoryEvent {
+  const factory LoadCategory() = _$LoadCategory;
 }
 
 /// @nodoc

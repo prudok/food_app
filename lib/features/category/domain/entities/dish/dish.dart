@@ -13,6 +13,7 @@ class Dish with _$Dish {
     required int weight,
     required String description,
     required List<String> tegs,
+    // ignore: invalid_annotation_target
     @JsonKey(name: 'image_url') required String imageUrl,
   }) = _Dish;
 

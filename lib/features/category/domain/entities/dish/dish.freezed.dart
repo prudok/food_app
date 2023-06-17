@@ -25,7 +25,8 @@ mixin _$Dish {
   int get price => throw _privateConstructorUsedError;
   int get weight => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  List<String> get tegs => throw _privateConstructorUsedError;
+  List<String> get tegs =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'image_url')
   String get imageUrl => throw _privateConstructorUsedError;
 
@@ -202,6 +203,7 @@ class _$_Dish with DiagnosticableTreeMixin implements _Dish {
     return EqualUnmodifiableListView(_tegs);
   }
 
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'image_url')
   final String imageUrl;
@@ -284,7 +286,7 @@ abstract class _Dish implements Dish {
   String get description;
   @override
   List<String> get tegs;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'image_url')
   String get imageUrl;
   @override

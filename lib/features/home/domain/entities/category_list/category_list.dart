@@ -8,7 +8,8 @@ part 'category_list.g.dart';
 @freezed
 class CategoryList with _$CategoryList {
   const factory CategoryList({
-    // IMPORTANT: first letter of JsonKey is a russian letter 'с' 
+    // IMPORTANT: first letter of JsonKey is a russian letter 'с'
+    // ignore: invalid_annotation_target
     @JsonKey(name: 'сategories') required List<CategoryItem> categories,
   }) = _CategoryList;
 

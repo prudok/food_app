@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants/device_size/device.dart';
-import '../../../../../core/constants/text_styles/app_text_styles.dart';
+import '../../../../../core/constants/app_text_styles.dart';
 import '../../../../category/presentation/views/category_view.dart';
 
 class CategoryTile extends StatelessWidget {
@@ -23,7 +22,7 @@ class CategoryTile extends StatelessWidget {
       },
       child: Container(
         height: 148,
-        width: Device.width,
+        width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,

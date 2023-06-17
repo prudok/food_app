@@ -20,7 +20,7 @@ UserCart _$UserCartFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserCart {
-  List<UserCartItem>? get items => throw _privateConstructorUsedError;
+  Map<int, UserCartItem>? get items => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +33,7 @@ abstract class $UserCartCopyWith<$Res> {
   factory $UserCartCopyWith(UserCart value, $Res Function(UserCart) then) =
       _$UserCartCopyWithImpl<$Res, UserCart>;
   @useResult
-  $Res call({List<UserCartItem>? items});
+  $Res call({Map<int, UserCartItem>? items});
 }
 
 /// @nodoc
@@ -55,7 +55,7 @@ class _$UserCartCopyWithImpl<$Res, $Val extends UserCart>
       items: freezed == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<UserCartItem>?,
+              as Map<int, UserCartItem>?,
     ) as $Val);
   }
 }
@@ -67,7 +67,7 @@ abstract class _$$_UserCartCopyWith<$Res> implements $UserCartCopyWith<$Res> {
       __$$_UserCartCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<UserCartItem>? items});
+  $Res call({Map<int, UserCartItem>? items});
 }
 
 /// @nodoc
@@ -87,7 +87,7 @@ class __$$_UserCartCopyWithImpl<$Res>
       items: freezed == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<UserCartItem>?,
+              as Map<int, UserCartItem>?,
     ));
   }
 }
@@ -101,7 +101,7 @@ class _$_UserCart with DiagnosticableTreeMixin implements _UserCart {
       _$$_UserCartFromJson(json);
 
   @override
-  final List<UserCartItem>? items;
+  final Map<int, UserCartItem>? items;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -144,12 +144,12 @@ class _$_UserCart with DiagnosticableTreeMixin implements _UserCart {
 }
 
 abstract class _UserCart implements UserCart {
-  factory _UserCart({final List<UserCartItem>? items}) = _$_UserCart;
+  factory _UserCart({final Map<int, UserCartItem>? items}) = _$_UserCart;
 
   factory _UserCart.fromJson(Map<String, dynamic> json) = _$_UserCart.fromJson;
 
   @override
-  List<UserCartItem>? get items;
+  Map<int, UserCartItem>? get items;
   @override
   @JsonKey(ignore: true)
   _$$_UserCartCopyWith<_$_UserCart> get copyWith =>

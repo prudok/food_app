@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app/features/cart/presentation/views/cart_view.dart';
+import 'package:food_app/features/category/domain/entities/dish_list.dart/dish_list.dart';
+import '../bloc/sorting_bloc/sorting_bloc.dart';
 
-import '../../../../core/constants/app_colors/app_colors.dart';
-import '../../../../core/constants/device_size/device.dart';
-import '../../../../core/constants/text_styles/app_text_styles.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_text_styles.dart';
+import '../../../cart/presentation/views/cart_view.dart';
 import '../bloc/category_bloc.dart';
 import '../widgets/app_bars/category_app_bar.dart';
 import '../widgets/grid_views/dish_grid_view.dart';
@@ -15,6 +16,7 @@ class CategoryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final categoryBloc = context.watch<CategoryBloc>();
+    final sortingBloc = context.watch<SortingBloc>();
 
     return Scaffold(
       backgroundColor: AppColors.white,
@@ -30,7 +32,11 @@ class CategoryView extends StatelessWidget {
           );
         },
       ),
-      body: categoryBloc.state.maybeWhen(
+      body: categoryBloc.state.when(
+        initial: () {
+          categoryBloc.add(const LoadCategory());
+          return const Center(child: CircularProgressIndicator());
+        },
         loading: () => const Center(child: CircularProgressIndicator()),
         loaded: (dishList) {
           return ListView(
@@ -38,7 +44,7 @@ class CategoryView extends StatelessWidget {
               const SizedBox(height: 10),
               SizedBox(
                 height: 40,
-                width: Device.width,
+                width: double.infinity,
                 child: ListView.separated(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   scrollDirection: Axis.horizontal,
@@ -57,11 +63,22 @@ class CategoryView extends StatelessWidget {
                   },
                 ),
               ),
-              DishGridVIew(dishList: dishList),
+              DishGridVIew(
+                dishList: sortingBloc.state.maybeWhen(
+                  initial: (_) {
+                    sortingBloc.add(SortingEvent.started(dishList: dishList));
+                    return sortingBloc.dishList;
+                  },
+                  saladSorting: (dishes) => dishes,
+                  riceSorting: (dishes) => dishes,
+                  fishSorting: (dishes) => dishes,
+                  withoutSorting: (dishes) => dishes,
+                  orElse: () => DishList(dishes: []),
+                ),
+              ),
             ],
           );
         },
-        orElse: () => const Center(child: Text('Error')),
       ),
     );
   }
@@ -74,6 +91,8 @@ class CategoryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sortingBloc = context.watch<SortingBloc>();
+
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         elevation: 0,
@@ -82,7 +101,9 @@ class CategoryButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        sortingBloc.add(const SortingEvent.sortByFish());
+      },
       child: Text(
         title,
         style: AppTextStyles.bodySmall.copyWith(
