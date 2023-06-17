@@ -25,7 +25,7 @@ class FoodApp extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: CategoryView(),
+        home: HomeView(),
       ),
     );
   }
