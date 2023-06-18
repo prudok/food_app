@@ -11,37 +11,47 @@ part 'cart_event.dart';
 part 'cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
-  CartBloc() : super(_Initial(userCart: UserCart())) {
-    UserCart userCart = UserCart(items: []);
+  UserCart userCart = UserCart(items: []);
 
-    on<_AddToCart>((event, emit) {
-      if (userCart.items!.isEmpty) {
-        userCart.items!.add([event.item]);
-      } else {
-        for (int ind = 0; ind < userCart.items!.length; ++ind) {
-          if (userCart.items![ind][0] == event.item) {
-            userCart.items![ind].add(event.item);
-            emit(CartState.initial(userCart: userCart));
-            return;
-          }
-        }
+  int calculateTotalSum() {
+    int sum = 0;
 
-        userCart.items!.add([event.item]);
-        emit(CartState.initial(userCart: userCart));
+    for (int ind = 0; ind < userCart.items.length; ++ind) {
+      for (int jnd = 0; jnd < userCart.items[ind].length; ++jnd) {
+        sum += userCart.items[ind][jnd].price;
       }
-    });
+    }
 
-    on<_RemoveFromCart>((event, emit) {
-      for (int ind = 0; ind < userCart.items!.length; ++ind) {
-        if (userCart.items![ind][0] == event.item) {
-          userCart.items![ind].remove(event.item);
-          emit(CartState.initial(userCart: userCart));
+    return sum;
+  }
+
+  CartBloc() : super(const _Initial()) {
+    on<_AddToCart>((event, emit) {
+      emit(const _Updating());
+      for (int ind = 0; ind < userCart.items.length; ++ind) {
+        if (userCart.items[ind][0] == event.item) {
+          userCart.items[ind].add(event.item);
+          emit(_Updated(userCart: userCart));
           return;
         }
       }
-
-      emit(CartState.initial(userCart: userCart));
+      userCart.items.add([event.item]);
+      emit(_Updated(userCart: userCart));
     });
 
+    on<_RemoveFromCart>((event, emit) {
+      emit(const _Updating());
+      for (int ind = 0; ind < userCart.items.length; ++ind) {
+        if (userCart.items[ind][0] == event.item) {
+          userCart.items[ind].remove(event.item);
+          userCart.items.removeWhere((element) => element.isEmpty);
+          emit(_Updated(userCart: userCart));
+          return;
+        }
+      }
+      userCart.items.remove([event.item]);
+      userCart.items.removeWhere((element) => element.isEmpty);
+      emit(_Updated(userCart: userCart));
+    });
   }
 }

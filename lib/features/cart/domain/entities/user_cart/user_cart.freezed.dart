@@ -14,15 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-UserCart _$UserCartFromJson(Map<String, dynamic> json) {
-  return _UserCart.fromJson(json);
-}
-
 /// @nodoc
 mixin _$UserCart {
-  List<List<UserCartItem>>? get items => throw _privateConstructorUsedError;
+  List<List<UserCartItem>> get items => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $UserCartCopyWith<UserCart> get copyWith =>
       throw _privateConstructorUsedError;
@@ -33,7 +28,7 @@ abstract class $UserCartCopyWith<$Res> {
   factory $UserCartCopyWith(UserCart value, $Res Function(UserCart) then) =
       _$UserCartCopyWithImpl<$Res, UserCart>;
   @useResult
-  $Res call({List<List<UserCartItem>>? items});
+  $Res call({List<List<UserCartItem>> items});
 }
 
 /// @nodoc
@@ -49,13 +44,13 @@ class _$UserCartCopyWithImpl<$Res, $Val extends UserCart>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? items = freezed,
+    Object? items = null,
   }) {
     return _then(_value.copyWith(
-      items: freezed == items
+      items: null == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<List<UserCartItem>>?,
+              as List<List<UserCartItem>>,
     ) as $Val);
   }
 }
@@ -67,7 +62,7 @@ abstract class _$$_UserCartCopyWith<$Res> implements $UserCartCopyWith<$Res> {
       __$$_UserCartCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<List<UserCartItem>>? items});
+  $Res call({List<List<UserCartItem>> items});
 }
 
 /// @nodoc
@@ -81,27 +76,24 @@ class __$$_UserCartCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? items = freezed,
+    Object? items = null,
   }) {
     return _then(_$_UserCart(
-      items: freezed == items
+      items: null == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
-              as List<List<UserCartItem>>?,
+              as List<List<UserCartItem>>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_UserCart with DiagnosticableTreeMixin implements _UserCart {
-  _$_UserCart({this.items});
 
-  factory _$_UserCart.fromJson(Map<String, dynamic> json) =>
-      _$$_UserCartFromJson(json);
+class _$_UserCart with DiagnosticableTreeMixin implements _UserCart {
+  _$_UserCart({required this.items});
 
   @override
-  final List<List<UserCartItem>>? items;
+  final List<List<UserCartItem>> items;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -124,7 +116,6 @@ class _$_UserCart with DiagnosticableTreeMixin implements _UserCart {
             const DeepCollectionEquality().equals(other.items, items));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(items));
@@ -134,22 +125,14 @@ class _$_UserCart with DiagnosticableTreeMixin implements _UserCart {
   @pragma('vm:prefer-inline')
   _$$_UserCartCopyWith<_$_UserCart> get copyWith =>
       __$$_UserCartCopyWithImpl<_$_UserCart>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_UserCartToJson(
-      this,
-    );
-  }
 }
 
 abstract class _UserCart implements UserCart {
-  factory _UserCart({final List<List<UserCartItem>>? items}) = _$_UserCart;
-
-  factory _UserCart.fromJson(Map<String, dynamic> json) = _$_UserCart.fromJson;
+  factory _UserCart({required final List<List<UserCartItem>> items}) =
+      _$_UserCart;
 
   @override
-  List<List<UserCartItem>>? get items;
+  List<List<UserCartItem>> get items;
   @override
   @JsonKey(ignore: true)
   _$$_UserCartCopyWith<_$_UserCart> get copyWith =>

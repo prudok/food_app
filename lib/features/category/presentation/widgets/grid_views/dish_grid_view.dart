@@ -16,7 +16,6 @@ class DishGridVIew extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return GridView.builder(
       padding: const EdgeInsets.symmetric(
         horizontal: 19,
@@ -182,7 +181,7 @@ class _DishAboutDialogState extends State<DishAboutDialog> {
                 '${widget.dish.price}р',
                 style: AppTextStyles.bodySmall,
               ),
-              const Text(' * '),
+              const Text(' · '),
               Text(
                 '${widget.dish.weight}г',
                 style: AppTextStyles.bodySmall.copyWith(
