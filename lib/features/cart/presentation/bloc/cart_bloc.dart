@@ -13,7 +13,7 @@ part 'cart_state.dart';
 class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc() : super(_Initial(userCart: UserCart())) {
     UserCart userCart = UserCart(items: []);
-    // TODO: implement adding new items to user cart
+
     on<_AddToCart>((event, emit) {
       if (userCart.items!.isEmpty) {
         userCart.items!.add([event.item]);
@@ -30,5 +30,18 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         emit(CartState.initial(userCart: userCart));
       }
     });
+
+    on<_RemoveFromCart>((event, emit) {
+      for (int ind = 0; ind < userCart.items!.length; ++ind) {
+        if (userCart.items![ind][0] == event.item) {
+          userCart.items![ind].remove(event.item);
+          emit(CartState.initial(userCart: userCart));
+          return;
+        }
+      }
+
+      emit(CartState.initial(userCart: userCart));
+    });
+
   }
 }

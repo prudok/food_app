@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/sorting_bloc/sorting_bloc.dart';
 
-import '../../domain/entities/dish_list.dart/dish_list.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_text_styles.dart';
-import '../../../cart/presentation/views/cart_view.dart';
+import '../../../shared/home_bottom_nav_bar.dart';
+import '../../../shared/shimmer_list_view.dart';
 import '../bloc/category_bloc.dart';
+import '../bloc/sorting_bloc/sorting_bloc.dart';
 import '../widgets/app_bars/category_app_bar.dart';
 import '../widgets/grid_views/dish_grid_view.dart';
 
@@ -28,29 +28,19 @@ class _CategoryViewState extends State<CategoryView> {
       'Все меню',
       'С рисом',
       'Салаты',
-      'С рыбой'
+      'С рыбой',
     ];
 
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: const CategoryAppBar(),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.shop),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (BuildContext context) => const CartView(),
-            ),
-          );
-        },
-      ),
+      bottomNavigationBar: const HomeBottomNavBar(),
       body: categoryBloc.state.when(
         initial: () {
           categoryBloc.add(const LoadCategory());
-          return const Center(child: CircularProgressIndicator());
+          return const SizedBox();
         },
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const Center(child: ShimmerListView()),
         loaded: (dishList) {
           return ListView(
             children: [
@@ -84,7 +74,7 @@ class _CategoryViewState extends State<CategoryView> {
                 ),
               ),
               DishGridVIew(
-                dishList: sortingBloc.state.maybeWhen(
+                dishList: sortingBloc.state.when(
                   initial: (_) {
                     sortingBloc.add(SortingEvent.started(dishList: dishList));
                     return sortingBloc.dishList;
@@ -93,7 +83,6 @@ class _CategoryViewState extends State<CategoryView> {
                   riceSorting: (dishes) => dishes,
                   fishSorting: (dishes) => dishes,
                   withoutSorting: (dishes) => dishes,
-                  orElse: () => DishList(dishes: []),
                 ),
               ),
             ],

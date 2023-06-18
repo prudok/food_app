@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_text_styles.dart';
 import '../../../shared/home_app_bar.dart';
+import '../../../shared/home_bottom_nav_bar.dart';
 import '../bloc/cart_bloc.dart';
 
 class CartView extends StatelessWidget {
@@ -16,6 +17,7 @@ class CartView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: const HomeAppBar(),
+      bottomNavigationBar: const HomeBottomNavBar(),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         children: [
@@ -30,9 +32,11 @@ class CartView extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.9,
+                      height: MediaQuery.of(context).size.height * 0.72,
                       child: ListView.separated(
                         itemBuilder: (context, index) {
+                          if (userCart.items![index].isEmpty)
+                            return const SizedBox();
                           return Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -89,12 +93,23 @@ class CartView extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        cartBloc.add(
+                                          CartEvent.addToCart(
+                                              item: userCart.items![0].first),
+                                        );
+                                      },
                                       icon: const Icon(Icons.add),
                                     ),
                                     Text('${userCart.items![index].length}'),
                                     IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        cartBloc.add(
+                                          CartEvent.removeFromCart(
+                                            item: userCart.items![0].first,
+                                          ),
+                                        );
+                                      },
                                       icon: const Icon(Icons.remove),
                                     ),
                                   ],

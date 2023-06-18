@@ -16,6 +16,7 @@ class DishGridVIew extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return GridView.builder(
       padding: const EdgeInsets.symmetric(
         horizontal: 19,
@@ -85,6 +86,7 @@ class DishAboutDialog extends StatefulWidget {
 
 class _DishAboutDialogState extends State<DishAboutDialog> {
   bool _isFavorited = false;
+
   @override
   Widget build(BuildContext context) {
     final cartBloc = context.watch<CartBloc>();
