@@ -17,9 +17,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     int sum = 0;
 
     for (int ind = 0; ind < userCart.items.length; ++ind) {
-      for (int jnd = 0; jnd < userCart.items[ind].length; ++jnd) {
-        sum += userCart.items[ind][jnd].price;
-      }
+        sum += userCart.items[ind][0].price * userCart.items[ind].length;
     }
 
     return sum;

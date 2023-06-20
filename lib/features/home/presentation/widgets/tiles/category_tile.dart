@@ -21,7 +21,7 @@ class CategoryTile extends StatelessWidget {
         );
       },
       child: Container(
-        height: 148,
+        height: 150,
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(

@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/constants/app_colors.dart';
-import '../../../../core/constants/app_text_styles.dart';
 import '../../../shared/home_app_bar.dart';
 import '../../../shared/home_bottom_nav_bar.dart';
-import '../../domain/entities/user_item/user_cart_item.dart';
 import '../bloc/cart_bloc.dart';
+import '../widgets/cart_preview_item.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});
@@ -73,91 +72,3 @@ class CartView extends StatelessWidget {
   }
 }
 
-class CartPreviewItem extends StatelessWidget {
-  final List<UserCartItem> item;
-
-  const CartPreviewItem({super.key, required this.item});
-
-  @override
-  Widget build(BuildContext context) {
-    final cartBloc = context.watch<CartBloc>();
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: AppColors.backgroundLighGrey,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: SizedBox(
-                width: 50,
-                height: 50,
-                child: Image.network(item.first.imageUrl),
-              ),
-            ),
-            const SizedBox(width: 20),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '${item.first.name}',
-                  style: AppTextStyles.bodySmall,
-                ),
-                Row(
-                  children: [
-                    Text(
-                      '${item.first.price}р',
-                      style: AppTextStyles.bodySmall,
-                    ),
-                    const Text(' · '),
-                    Text(
-                      '${item.first.weight}г',
-                      style: AppTextStyles.bodySmall.copyWith(
-                        color: AppColors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: AppColors.backgroundLighGrey,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Row(
-            children: [
-              IconButton(
-                onPressed: () {
-                  cartBloc.add(
-                    CartEvent.addToCart(
-                      item: item.first,
-                    ),
-                  );
-                },
-                icon: const Icon(Icons.add),
-              ),
-              Text('${item.length}'),
-              IconButton(
-                onPressed: () {
-                  cartBloc.add(
-                    CartEvent.removeFromCart(
-                      item: item.first,
-                    ),
-                  );
-                },
-                icon: const Icon(Icons.remove),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-}
