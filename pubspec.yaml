@@ -79,6 +79,7 @@ flutter:
     - assets/images/back_button.png
     - assets/images/favorite.png
     - assets/images/close.png
+    - assets/images/profile.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

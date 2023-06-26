@@ -13,7 +13,7 @@ class AppBarAvatar extends StatelessWidget {
       radius: 25,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(40),
-        child: Image.network(
+        child: Image.asset(
           AssetPaths.profile,
           height: 50,
           width: 50,

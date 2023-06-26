@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/constants/app_colors.dart';
-import '../../../../../core/constants/asset_paths.dart';
 import '../../../../../core/constants/app_text_styles.dart';
+import '../../../../../core/constants/asset_paths.dart';
+import '../../../../home/presentation/views/home_view.dart';
 import '../../../../shared/app_bar_avatar.dart';
 
 class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -15,7 +16,10 @@ class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: IconButton(
         onPressed: () {
-          Navigator.of(context).pop();
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const HomeView()),
+          );
         },
         icon: Image.asset(AssetPaths.backButton),
       ),
