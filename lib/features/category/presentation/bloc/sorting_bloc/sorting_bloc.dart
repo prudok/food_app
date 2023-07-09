@@ -1,16 +1,14 @@
 import 'package:bloc/bloc.dart';
+import 'package:food_app/features/category/domain/entities/dish_list.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../domain/entities/dish/dish.dart';
-import '../../../domain/entities/dish_list.dart/dish_list.dart';
-
-part 'sorting_event.dart';
-part 'sorting_state.dart';
 part 'sorting_bloc.freezed.dart';
 
-class SortingBloc extends Bloc<SortingEvent, SortingState> {
-  DishList dishList = DishList(dishes: []);
+part 'sorting_event.dart';
 
+part 'sorting_state.dart';
+
+class SortingBloc extends Bloc<SortingEvent, SortingState> {
   SortingBloc() : super(_Initial(dishList: DishList(dishes: []))) {
     on<Started>((event, emit) {
       dishList.dishes.clear();
@@ -27,7 +25,7 @@ class SortingBloc extends Bloc<SortingEvent, SortingState> {
         SortingState.fishSorting(
           dishList: DishList(
             dishes: dishList.dishes
-                .where((dish) => dish.tegs.contains("С рыбой"))
+                .where((dish) => dish.tegs.contains('С рыбой'))
                 .toList(),
           ),
         ),
@@ -57,9 +55,7 @@ class SortingBloc extends Bloc<SortingEvent, SortingState> {
         ),
       );
     });
-
-    // on<SortingEvent>((event, emit) {
-    //   // TODO: implement event handler
-    // });
   }
+
+  DishList dishList = DishList(dishes: []);
 }

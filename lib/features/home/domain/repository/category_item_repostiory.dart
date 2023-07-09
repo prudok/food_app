@@ -1,4 +1,4 @@
-import '../entities/category_list/category_list.dart';
+import 'package:food_app/features/home/domain/entities/category_list.dart';
 
 abstract class CategoryItemRepository {
   Future<CategoryList> getItems();

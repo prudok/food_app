@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../../core/constants/app_colors.dart';
-import '../../../../../core/constants/asset_paths.dart';
-import '../../../../../core/constants/app_text_styles.dart';
-import '../../../../cart/domain/entities/user_item/user_cart_item.dart';
-import '../../../../cart/presentation/bloc/cart_bloc.dart';
-import '../../../domain/entities/dish/dish.dart';
-import '../../../domain/entities/dish_list.dart/dish_list.dart';
+import 'package:food_app/core/constants/app_colors.dart';
+import 'package:food_app/core/constants/app_text_styles.dart';
+import 'package:food_app/core/constants/asset_paths.dart';
+import 'package:food_app/features/cart/domain/entities/user_item/user_cart_item.dart';
+import 'package:food_app/features/cart/presentation/bloc/cart_bloc.dart';
+import 'package:food_app/features/category/domain/entities/dish.dart';
+import 'package:food_app/features/category/domain/entities/dish_list.dart';
 
 class DishGridVIew extends StatelessWidget {
-  final DishList dishList;
+  const DishGridVIew({required this.dishList, super.key});
 
-  const DishGridVIew({super.key, required this.dishList});
+  final DishList dishList;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,6 @@ class DishGridVIew extends StatelessWidget {
       ),
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      scrollDirection: Axis.vertical,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         crossAxisSpacing: 10,
@@ -49,7 +47,7 @@ class DishGridVIew extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(14),
                 decoration: const BoxDecoration(
-                  color: AppColors.backgroundLighGrey,
+                  color: AppColors.backgroundLightGrey,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
                 child: SizedBox(
@@ -75,9 +73,9 @@ class DishGridVIew extends StatelessWidget {
 }
 
 class DishAboutDialog extends StatefulWidget {
-  final Dish dish;
+  const DishAboutDialog({required this.dish, super.key});
 
-  const DishAboutDialog({super.key, required this.dish});
+  final Dish dish;
 
   @override
   State<DishAboutDialog> createState() => _DishAboutDialogState();
@@ -101,7 +99,7 @@ class _DishAboutDialogState extends State<DishAboutDialog> {
                 width: 300,
                 height: 230,
                 decoration: BoxDecoration(
-                  color: AppColors.backgroundLighGrey,
+                  color: AppColors.backgroundLightGrey,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Padding(

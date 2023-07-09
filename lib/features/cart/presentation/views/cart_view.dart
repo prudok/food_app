@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/constants/app_colors.dart';
-import '../../../shared/home_app_bar.dart';
-import '../../../shared/home_bottom_nav_bar.dart';
-import '../bloc/cart_bloc.dart';
-import '../widgets/cart_preview_item.dart';
+import 'package:food_app/core/constants/app_colors.dart';
+import 'package:food_app/features/cart/presentation/bloc/cart_bloc.dart';
+import 'package:food_app/features/cart/presentation/widgets/cart_preview_item.dart';
+import 'package:food_app/features/shared/home_app_bar.dart';
+import 'package:food_app/features/shared/home_bottom_nav_bar.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});
@@ -71,4 +70,3 @@ class CartView extends StatelessWidget {
     );
   }
 }
-

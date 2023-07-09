@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../category_item/category_item.dart';
+import 'category_item.dart';
 
 part 'category_list.freezed.dart';
 part 'category_list.g.dart';

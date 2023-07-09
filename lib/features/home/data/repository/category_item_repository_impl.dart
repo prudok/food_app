@@ -1,15 +1,14 @@
 import 'package:food_app/features/home/data/datasource/home_api_impl.dart';
-
-import '../../domain/entities/category_list/category_list.dart';
-import '../../domain/repository/category_item_repostiory.dart';
+import 'package:food_app/features/home/domain/entities/category_list.dart';
+import 'package:food_app/features/home/domain/repository/category_item_repostiory.dart';
 
 class CategoryItemRepositoryImpl extends CategoryItemRepository {
-  final HomeAPIImpl homeAPI;
   CategoryItemRepositoryImpl(this.homeAPI);
 
-  // TODO: refactor code below
+  final HomeAPIImpl homeAPI;
+
   @override
-  Future<CategoryList> getItems() async {
-    return await homeAPI.loadCategories();
+  Future<CategoryList> getItems() {
+    return homeAPI.loadCategories();
   }
 }

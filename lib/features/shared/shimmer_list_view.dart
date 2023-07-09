@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'shimmer_container.dart';
+import 'package:food_app/features/shared/shimmer_container.dart';
 
 
 class ShimmerListView extends StatelessWidget {

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../core/constants/app_colors.dart';
-import '../../../../../core/constants/app_text_styles.dart';
-import '../../../../../core/constants/asset_paths.dart';
-import '../../../../home/presentation/views/home_view.dart';
-import '../../../../shared/app_bar_avatar.dart';
+import 'package:food_app/core/constants/app_colors.dart';
+import 'package:food_app/core/constants/app_text_styles.dart';
+import 'package:food_app/core/constants/asset_paths.dart';
+import 'package:food_app/features/home/presentation/views/home_view.dart';
+import 'package:food_app/features/shared/app_bar_avatar.dart';
 
 class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CategoryAppBar({

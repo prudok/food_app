@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/constants/app_colors.dart';
-import '../../../shared/home_bottom_nav_bar.dart';
-import '../../../shared/shimmer_list_view.dart';
-import '../bloc/category_bloc.dart';
-import '../bloc/sorting_bloc/sorting_bloc.dart';
-import '../widgets/CategoryButton.dart';
-import '../widgets/app_bars/category_app_bar.dart';
-import '../widgets/grid_views/dish_grid_view.dart';
+import 'package:food_app/core/constants/app_colors.dart';
+import 'package:food_app/features/category/presentation/bloc/category_bloc.dart';
+import 'package:food_app/features/category/presentation/bloc/sorting_bloc/sorting_bloc.dart';
+import 'package:food_app/features/category/presentation/widgets/CategoryButton.dart';
+import 'package:food_app/features/category/presentation/widgets/app_bars/category_app_bar.dart';
+import 'package:food_app/features/category/presentation/widgets/grid_views/dish_grid_view.dart';
+import 'package:food_app/features/shared/home_bottom_nav_bar.dart';
+import 'package:food_app/features/shared/shimmer_list_view.dart';
 
 class CategoryView extends StatefulWidget {
   const CategoryView({super.key});
@@ -24,7 +23,7 @@ class _CategoryViewState extends State<CategoryView> {
   Widget build(BuildContext context) {
     final categoryBloc = context.watch<CategoryBloc>();
     final sortingBloc = context.watch<SortingBloc>();
-    final List<String> categories = [
+    final categories = <String>[
       'Все меню',
       'С рисом',
       'Салаты',
@@ -92,4 +91,6 @@ class _CategoryViewState extends State<CategoryView> {
     );
   }
 }
+
+
 

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../core/constants/app_colors.dart';
-import '../../../../../core/constants/asset_paths.dart';
-import '../../../../../core/constants/app_text_styles.dart';
+import 'package:food_app/core/constants/app_colors.dart';
+import 'package:food_app/core/constants/app_text_styles.dart';
+import 'package:food_app/core/constants/asset_paths.dart';
 
 class GeoDataTitle extends StatelessWidget {
+  const GeoDataTitle({required this.cityName, required this.date, super.key});
+
   final String cityName;
   final String date;
-
-  const GeoDataTitle({super.key, required this.cityName, required this.date});
 
   @override
   Widget build(BuildContext context) {

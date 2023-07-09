@@ -1,21 +1,14 @@
 import 'package:bloc/bloc.dart';
+import 'package:food_app/features/home/data/datasource/home_api_impl.dart';
+import 'package:food_app/features/home/data/repository/category_item_repository_impl.dart';
+import 'package:food_app/features/home/domain/entities/category_list.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../data/datasource/home_api_impl.dart';
-import '../../data/repository/category_item_repository_impl.dart';
-import '../../domain/entities/category_list/category_list.dart';
 
 part 'home_bloc.freezed.dart';
 part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final HomeAPIImpl homeAPIImpl = HomeAPIImpl();
-  late CategoryItemRepositoryImpl categoryItemRepository;
-  void initBloc() {
-    categoryItemRepository = CategoryItemRepositoryImpl(homeAPIImpl);
-  }
-
   HomeBloc() : super(const HomeState.initial()) {
     initBloc();
 
@@ -25,5 +18,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         emit(HomeState.loaded(categoryList: categoryList));
       });
     });
+  }
+
+  final HomeAPIImpl homeAPIImpl = HomeAPIImpl();
+  late CategoryItemRepositoryImpl categoryItemRepository;
+
+  void initBloc() {
+    categoryItemRepository = CategoryItemRepositoryImpl(homeAPIImpl);
   }
 }

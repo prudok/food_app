@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/constants/app_colors.dart';
-import '../../../shared/home_app_bar.dart';
-import '../../../shared/home_bottom_nav_bar.dart';
-import '../../../shared/shimmer_list_view.dart';
-import '../bloc/home_bloc.dart';
-import '../widgets/list_views/category_list_view.dart';
+import 'package:food_app/core/constants/app_colors.dart';
+import 'package:food_app/features/home/presentation/bloc/home_bloc.dart';
+import 'package:food_app/features/home/presentation/widgets/category_list_view.dart';
+import 'package:food_app/features/shared/home_app_bar.dart';
+import 'package:food_app/features/shared/home_bottom_nav_bar.dart';
+import 'package:food_app/features/shared/shimmer_list_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

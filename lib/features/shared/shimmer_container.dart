@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/core/constants/app_colors.dart';
 import 'package:shimmer/shimmer.dart';
-
-import '../../core/constants/app_colors.dart';
 
 class ShimmerContainer extends StatelessWidget {
   const ShimmerContainer({
@@ -16,7 +15,7 @@ class ShimmerContainer extends StatelessWidget {
       child: Container(
         color: AppColors.shimmerGrey,
         height: 148,
-        width: double.infinity
+        width: double.infinity,
       ),
     );
   }

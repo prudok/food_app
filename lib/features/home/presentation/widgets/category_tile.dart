@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../core/constants/app_text_styles.dart';
-import '../../../../category/presentation/views/category_view.dart';
+import 'package:food_app/core/constants/app_text_styles.dart';
+import 'package:food_app/features/category/presentation/views/category_view.dart';
 
 class CategoryTile extends StatelessWidget {
+  const CategoryTile({required this.imageUrl, required this.name, super.key});
+
   final String imageUrl;
   final String name;
-
-  const CategoryTile({super.key, required this.imageUrl, required this.name});
 
   @override
   Widget build(BuildContext context) {

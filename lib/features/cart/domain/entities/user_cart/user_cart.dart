@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
+import 'package:food_app/features/cart/domain/entities/user_item/user_cart_item.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../user_item/user_cart_item.dart';
 
 part 'user_cart.freezed.dart';
 

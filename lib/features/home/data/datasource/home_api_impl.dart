@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../domain/entities/category_list/category_list.dart';
+import '../../domain/entities/category_list.dart';
 import 'home_api.dart';
 
 class HomeAPIImpl {

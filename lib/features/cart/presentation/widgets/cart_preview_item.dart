@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/constants/app_colors.dart';
-import '../../../../core/constants/app_text_styles.dart';
-import '../../domain/entities/user_item/user_cart_item.dart';
-import '../bloc/cart_bloc.dart';
+import 'package:food_app/core/constants/app_colors.dart';
+import 'package:food_app/core/constants/app_text_styles.dart';
+import 'package:food_app/features/cart/domain/entities/user_item/user_cart_item.dart';
+import 'package:food_app/features/cart/presentation/bloc/cart_bloc.dart';
 
 class CartPreviewItem extends StatelessWidget {
-  final List<UserCartItem> item;
+  const CartPreviewItem({required this.item, super.key});
 
-  const CartPreviewItem({super.key, required this.item});
+  final List<UserCartItem> item;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class CartPreviewItem extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: AppColors.backgroundLighGrey,
+                color: AppColors.backgroundLightGrey,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: SizedBox(
@@ -37,7 +36,7 @@ class CartPreviewItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${item.first.name}',
+                  item.first.name,
                   style: AppTextStyles.bodySmall,
                 ),
                 Row(
@@ -61,7 +60,7 @@ class CartPreviewItem extends StatelessWidget {
         ),
         Container(
           decoration: BoxDecoration(
-            color: AppColors.backgroundLighGrey,
+            color: AppColors.backgroundLightGrey,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Row(

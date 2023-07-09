@@ -1,7 +1,6 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-
-import '../dish/dish.dart';
+import 'package:food_app/features/category/domain/entities/dish.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'dish_list.freezed.dart';
 part 'dish_list.g.dart';

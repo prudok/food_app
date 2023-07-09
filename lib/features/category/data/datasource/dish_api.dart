@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:food_app/core/constants/api_constants.dart';
+import 'package:food_app/features/category/domain/entities/dish_list.dart';
 import 'package:retrofit/retrofit.dart';
-
-import '../../../../core/constants/api_constants.dart';
-import '../../domain/entities/dish_list.dart/dish_list.dart';
 
 part 'dish_api.g.dart';
 

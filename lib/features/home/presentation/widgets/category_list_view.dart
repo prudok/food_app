@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-
-import '../../../domain/entities/category_list/category_list.dart';
-import '../tiles/category_tile.dart';
+import 'package:food_app/features/home/domain/entities/category_list.dart';
+import 'package:food_app/features/home/presentation/widgets/category_tile.dart';
 
 class CategoryListView extends StatelessWidget {
-  final CategoryList categoryList;
+  const CategoryListView({required this.categoryList, super.key});
 
-  const CategoryListView({super.key, required this.categoryList});
+  final CategoryList categoryList;
 
   @override
   Widget build(BuildContext context) {
