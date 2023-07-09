@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/core/constants/app_colors.dart';
 import 'package:food_app/core/constants/app_text_styles.dart';
-import 'package:food_app/features/cart/domain/entities/user_item/user_cart_item.dart';
+import 'package:food_app/features/cart/domain/entities/user_cart_item.dart';
 import 'package:food_app/features/cart/presentation/bloc/cart_bloc.dart';
 
 class CartPreviewItem extends StatelessWidget {

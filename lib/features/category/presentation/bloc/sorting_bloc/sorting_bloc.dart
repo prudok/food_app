@@ -3,9 +3,7 @@ import 'package:food_app/features/category/domain/entities/dish_list.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'sorting_bloc.freezed.dart';
-
 part 'sorting_event.dart';
-
 part 'sorting_state.dart';
 
 class SortingBloc extends Bloc<SortingEvent, SortingState> {
