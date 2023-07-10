@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app/core/constants/app_colors.dart';
+import 'package:food_app/core/app_colors.dart';
 import 'package:food_app/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:food_app/features/cart/presentation/widgets/cart_preview_item.dart';
 import 'package:food_app/features/shared/home_app_bar.dart';

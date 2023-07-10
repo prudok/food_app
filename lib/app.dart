@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app/core/injection.dart';
 import 'package:food_app/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:food_app/features/category/presentation/bloc/category_bloc.dart';
 import 'package:food_app/features/category/presentation/bloc/sorting_bloc/sorting_bloc.dart';
@@ -13,13 +14,14 @@ class FoodApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     initializeDateFormatting();
+    getIt.setDependencies();
 
-   return MultiBlocProvider(
+    return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => HomeBloc()),
-        BlocProvider(create: (context) => CategoryBloc()),
-        BlocProvider(create: (context) => CartBloc()),
-        BlocProvider(create: (context) => SortingBloc()),
+        BlocProvider(create: (context) => getIt.get<HomeBloc>()),
+        BlocProvider(create: (context) => getIt.get<CategoryBloc>()),
+        BlocProvider(create: (context) => getIt.get<CartBloc>()),
+        BlocProvider(create: (context) => getIt.get<SortingBloc>()),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

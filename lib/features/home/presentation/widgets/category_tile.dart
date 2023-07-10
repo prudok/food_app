@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/core/constants/app_text_styles.dart';
+import 'package:food_app/core/app_text_styles.dart';
 import 'package:food_app/features/category/presentation/views/category_view.dart';
 
 class CategoryTile extends StatelessWidget {

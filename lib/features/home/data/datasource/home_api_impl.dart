@@ -1,10 +1,10 @@
-import 'package:dio/dio.dart';
-
-import '../../domain/entities/category_list.dart';
-import 'home_api.dart';
+import 'package:food_app/features/home/data/datasource/home_api.dart';
+import 'package:food_app/features/home/domain/entities/category_list.dart';
 
 class HomeAPIImpl {
-  final client = HomeAPI(Dio());
+  HomeAPIImpl(this.client);
+
+  final HomeAPI client;
 
   Future<CategoryList> loadCategories() {
     return client.loadCategories().then((categories) => categories);
