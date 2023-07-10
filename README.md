@@ -19,3 +19,12 @@ E-commerce shop UI app with clean architecture
 
 # Demonstration
 [overview.webm](https://github.com/rel1nce/food_app/assets/101862863/28ab838e-b9fb-4f37-b56c-714dd7f7018b)
+
+### Terms of use
+*In order to run the project, you have to write commands below in your console in project folder:*
+```
+# get dependencies 
+flutter pub get
+# build generated files
+dart run build_runner build
+```
