@@ -7,4 +7,7 @@ class CategoryState with _$CategoryState {
   const factory CategoryState.loading() = _Loading;
 
   const factory CategoryState.loaded({required DishList dishList}) = _Loaded;
+
+  const factory CategoryState.loadingFailed({required Object exception}) =
+      _LoadingFailed;
 }

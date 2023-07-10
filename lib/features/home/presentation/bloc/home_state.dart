@@ -8,4 +8,7 @@ class HomeState with _$HomeState {
 
   const factory HomeState.loaded({required CategoryList categoryList}) =
       _Loaded;
+
+  const factory HomeState.loadingFailed({required Object exception}) =
+      _LoadingFailed;
 }

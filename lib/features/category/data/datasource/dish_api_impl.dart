@@ -7,6 +7,13 @@ class DishAPIImpl {
   final DishAPI client;
 
   Future<DishList> loadDishes() {
-    return client.loadDishes().then((dish) => dish);
+    try {
+      return client.loadDishes().then((dish) => dish);
+    } on Object catch (error, stackTrace) {
+      throw Error.throwWithStackTrace(
+        error,
+        stackTrace,
+      );
+    }
   }
 }

@@ -7,6 +7,13 @@ class HomeAPIImpl {
   final HomeAPI client;
 
   Future<CategoryList> loadCategories() {
-    return client.loadCategories().then((categories) => categories);
+    try {
+      return client.loadCategories().then((categories) => categories);
+    } on Object catch (error, stackTrace) {
+      throw Error.throwWithStackTrace(
+        error,
+        stackTrace,
+      );
+    }
   }
 }

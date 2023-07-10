@@ -31,6 +31,15 @@ class _HomeViewState extends State<HomeView> {
         loaded: (categoryList) => CategoryListView(
           categoryList: categoryList,
         ),
+        loadingFailed: (_) => const Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.error_outline),
+              Text('Ошбика получения данных.'),
+            ],
+          ),
+        ),
       ),
       bottomNavigationBar: const HomeBottomNavBar(),
     );

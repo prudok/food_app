@@ -39,6 +39,15 @@ class _CategoryViewState extends State<CategoryView> {
           categoryBloc.add(const LoadCategory());
           return const SizedBox();
         },
+        loadingFailed: (_) => const Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.error_outline),
+              Text('Ошибка получения данных.'),
+            ],
+          ),
+        ),
         loading: () => const Center(child: ShimmerListView()),
         loaded: (dishList) {
           return ListView(
@@ -91,6 +100,3 @@ class _CategoryViewState extends State<CategoryView> {
     );
   }
 }
-
-
-
