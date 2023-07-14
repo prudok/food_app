@@ -50,29 +50,27 @@ class _CategoryViewState extends State<CategoryView> {
         ),
         loading: () => const Center(child: ShimmerListView()),
         loaded: (dishList) {
-          return ListView(
+          return Column(
             children: [
-              const SizedBox(height: 10),
               SizedBox(
-                height: 40,
-                width: double.infinity,
+                height: 60,
                 child: ListView.separated(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 10,
+                  ),
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int index) {
-                    return Row(
-                      children: [
-                        CategoryButton(
-                          title: categories[index],
-                          isPressed: sortingBloc.state.when(
-                            initial: (_) => index == 0,
-                            withoutSorting: (_) => index == 0,
-                            riceSorting: (_) => index == 1,
-                            saladSorting: (_) => index == 2,
-                            fishSorting: (_) => index == 3,
-                          ),
-                        ),
-                      ],
+                    return CategoryButton(
+                      title: categories[index],
+                      isPressed: sortingBloc.state.when(
+                        initial: (_) => index == 0,
+                        withoutSorting: (_) => index == 0,
+                        riceSorting: (_) => index == 1,
+                        saladSorting: (_) => index == 2,
+                        fishSorting: (_) => index == 3,
+                      ),
                     );
                   },
                   itemCount: 4,
@@ -81,16 +79,22 @@ class _CategoryViewState extends State<CategoryView> {
                   },
                 ),
               ),
-              DishGridVIew(
-                dishList: sortingBloc.state.when(
-                  initial: (_) {
-                    sortingBloc.add(SortingEvent.started(dishList: dishList));
-                    return sortingBloc.dishList;
-                  },
-                  saladSorting: (dishes) => dishes,
-                  riceSorting: (dishes) => dishes,
-                  fishSorting: (dishes) => dishes,
-                  withoutSorting: (dishes) => dishes,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: DishGridVIew(
+                    dishList: sortingBloc.state.when(
+                      initial: (_) {
+                        sortingBloc.add(
+                          SortingEvent.started(dishList: dishList),
+                        );
+                        return sortingBloc.dishList;
+                      },
+                      saladSorting: (dishes) => dishes,
+                      riceSorting: (dishes) => dishes,
+                      fishSorting: (dishes) => dishes,
+                      withoutSorting: (dishes) => dishes,
+                    ),
+                  ),
                 ),
               ),
             ],

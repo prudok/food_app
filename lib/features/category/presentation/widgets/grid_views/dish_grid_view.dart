@@ -26,7 +26,7 @@ class DishGridVIew extends StatelessWidget {
         crossAxisCount: 3,
         crossAxisSpacing: 10,
         mainAxisSpacing: 15,
-        mainAxisExtent: 160,
+        mainAxisExtent: 150,
       ),
       itemCount: dishList.dishes.length,
       itemBuilder: (BuildContext context, int index) {
@@ -42,20 +42,24 @@ class DishGridVIew extends StatelessWidget {
             );
           },
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                padding: const EdgeInsets.all(14),
-                decoration: const BoxDecoration(
-                  color: AppColors.backgroundLightGrey,
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                ),
-                child: SizedBox(
-                  height: 90,
-                  width: 90,
-                  child: Image.network(
-                    dishList.dishes[index].imageUrl,
-                    fit: BoxFit.scaleDown,
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: const BoxDecoration(
+                    color: AppColors.backgroundLightGrey,
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      minHeight: 90,
+                      minWidth: 90,
+                    ),
+                    child: Image.network(
+                      dishList.dishes[index].imageUrl,
+                      fit: BoxFit.scaleDown,
+                    ),
                   ),
                 ),
               ),
