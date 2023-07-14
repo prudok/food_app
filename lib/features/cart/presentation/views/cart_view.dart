@@ -1,37 +1,38 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/core/app_colors.dart';
 import 'package:food_app/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:food_app/features/cart/presentation/widgets/cart_preview_item.dart';
 import 'package:food_app/features/shared/home_app_bar.dart';
-import 'package:food_app/features/shared/home_bottom_nav_bar.dart';
 
+@RoutePage()
 class CartView extends StatelessWidget {
   const CartView({super.key});
 
   @override
   Widget build(BuildContext context) {
     final cartBloc = context.watch<CartBloc>();
+    const Widget noItems = Center(
+      child: Text('Нет товаров.'),
+    );
 
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: const HomeAppBar(),
-      bottomNavigationBar: const HomeBottomNavBar(),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         children: [
           cartBloc.state.maybeWhen(
             updated: (userCart) {
               if (userCart.items.isEmpty) {
-                return const Center(
-                  child: Text('Нет Товаров.'),
-                );
+                return noItems;
               } else {
                 return Column(
                   children: [
                     SizedBox(
                       width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.72,
+                      height: MediaQuery.of(context).size.height * 0.75,
                       child: ListView.separated(
                         itemCount: userCart.items.length,
                         itemBuilder: (context, index) {
@@ -53,17 +54,16 @@ class CartView extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        child:
-                            Text('Оплатить ${cartBloc.calculateTotalSum()} р'),
+                        child: Text(
+                          'Оплатить ${cartBloc.calculateTotalSum()} р',
+                        ),
                       ),
                     ),
                   ],
                 );
               }
             },
-            orElse: () => const Center(
-              child: Text('No Items found.'),
-            ),
+            orElse: () => noItems,
           ),
         ],
       ),

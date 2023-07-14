@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:food_app/config/router.dart';
 import 'package:food_app/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:food_app/features/category/data/datasource/dish_api.dart';
 import 'package:food_app/features/category/data/datasource/dish_api_impl.dart';
@@ -40,6 +41,9 @@ class Injection {
     put<CategoryBloc>(CategoryBloc(get<CategoryRepositoryImpl>()));
     put<CartBloc>(CartBloc());
     put<SortingBloc>(SortingBloc());
+
+    // Router
+    put<AppRouter>(AppRouter());
   }
 }
 

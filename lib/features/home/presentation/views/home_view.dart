@@ -1,12 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/core/app_colors.dart';
 import 'package:food_app/features/home/presentation/bloc/home_bloc.dart';
 import 'package:food_app/features/home/presentation/widgets/category_list_view.dart';
 import 'package:food_app/features/shared/home_app_bar.dart';
-import 'package:food_app/features/shared/home_bottom_nav_bar.dart';
 import 'package:food_app/features/shared/shimmer_list_view.dart';
 
+@RoutePage()
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
@@ -41,7 +42,6 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
       ),
-      bottomNavigationBar: const HomeBottomNavBar(),
     );
   }
 }

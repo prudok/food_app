@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app/config/router.dart';
 import 'package:food_app/core/injection.dart';
 import 'package:food_app/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:food_app/features/category/presentation/bloc/category_bloc.dart';
 import 'package:food_app/features/category/presentation/bloc/sorting_bloc/sorting_bloc.dart';
 import 'package:food_app/features/home/presentation/bloc/home_bloc.dart';
-import 'package:food_app/features/home/presentation/views/home_view.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 class FoodApp extends StatelessWidget {
@@ -23,9 +23,9 @@ class FoodApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt.get<CartBloc>()),
         BlocProvider(create: (context) => getIt.get<SortingBloc>()),
       ],
-      child: const MaterialApp(
+      child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        home: HomeView(),
+        routerConfig: getIt.get<AppRouter>().config(),
       ),
     );
   }

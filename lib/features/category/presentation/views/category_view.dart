@@ -6,7 +6,6 @@ import 'package:food_app/features/category/presentation/bloc/sorting_bloc/sortin
 import 'package:food_app/features/category/presentation/widgets/CategoryButton.dart';
 import 'package:food_app/features/category/presentation/widgets/app_bars/category_app_bar.dart';
 import 'package:food_app/features/category/presentation/widgets/grid_views/dish_grid_view.dart';
-import 'package:food_app/features/shared/home_bottom_nav_bar.dart';
 import 'package:food_app/features/shared/shimmer_list_view.dart';
 
 class CategoryView extends StatefulWidget {
@@ -33,7 +32,6 @@ class _CategoryViewState extends State<CategoryView> {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: const CategoryAppBar(),
-      bottomNavigationBar: const HomeBottomNavBar(),
       body: categoryBloc.state.when(
         initial: () {
           categoryBloc.add(const LoadCategory());

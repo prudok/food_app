@@ -94,7 +94,6 @@ class _DishAboutDialogState extends State<DishAboutDialog> {
 
     return AlertDialog(
       content: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           Stack(
