@@ -3,13 +3,16 @@ E-commerce shop UI app with clean architecture
 
 ## Features
 - Clean architecture
-- Cart functionality 
+- Cart functionality
+- Scalable UI
 
 ## Used packages
 - State management with [flutter_bloc](https://pub.dev/packages/flutter_bloc)
 - [Freezed](https://pub.dev/packages/freezed), code generator for data-classes/unions/pattern-matching/cloning and [freezed_annotation](https://pub.dev/packages/freezed_annotation)
+- Navigation with [auto_route](https://pub.dev/packages/auto_route) and [auto_route_generator](https://pub.dev/packages/auto_route_generator)
 - Shimmer effects with [shimmer](https://pub.dev/packages/shimmer)
 - [build_runner](https://pub.dev/packages/build_runner)
+
 
 
 # Overview
