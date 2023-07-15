@@ -42,7 +42,6 @@ class Injection {
     put<CartBloc>(CartBloc());
     put<SortingBloc>(SortingBloc());
 
-    // Router
     put<AppRouter>(AppRouter());
   }
 }
