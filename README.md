@@ -15,10 +15,10 @@ E-commerce shop UI app with clean architecture
 # Overview
 | Home view | Dishes view | Filtering By Salads view | Dialog view | Cart View |
 |-----------|---------------|-------------|----------------|------------|
-|<img src="https://github.com/rel1nce/food_app/assets/101862863/ca4ff960-8d59-4525-9f8a-576a8d2eae0f.png" width="250">|<img src="https://github.com/rel1nce/food_app/assets/101862863/a0f04692-fe8c-43c9-9edd-26154d4b768b.png" width="250">|<img src="https://github.com/rel1nce/food_app/assets/101862863/2b8ced43-d3e5-4f34-80a8-1c0461fad86a.png" width="250">|<img src="https://github.com/rel1nce/food_app/assets/101862863/d3d7a991-0ea2-47ed-bafe-d0d731da3188.png" width="250">|<img src="https://github.com/rel1nce/food_app/assets/101862863/37bc7f2e-4f20-4aef-b73f-927d2af5acb9.png" width="250">|
+|<img src="https://github.com/rel1nce/food_app/assets/101862863/cfab59cd-7a29-4a87-bdc2-708a24671692" width="250">|<img src="https://github.com/rel1nce/food_app/assets/101862863/0512d521-49e9-4336-864c-b917ba9ba2f8" width="250">|<img src="https://github.com/rel1nce/food_app/assets/101862863/bf6eb8fc-5d8e-482e-8795-a886d3516774" width="250">|<img src="https://github.com/rel1nce/food_app/assets/101862863/815d455f-d40b-4c2e-96ff-e5a3fdfdfc36" width="250">|<img src="https://github.com/rel1nce/food_app/assets/101862863/8e770e31-7e22-4504-8b66-6235d2d5931f" width="250">|
 
 # Demonstration
-[overview.webm](https://github.com/rel1nce/food_app/assets/101862863/28ab838e-b9fb-4f37-b56c-714dd7f7018b)
+[overview.webm](https://github.com/rel1nce/food_app/assets/101862863/b53c11ca-d39a-47ee-b82a-0acb91952eaf)
 
 ### Terms of use
 *In order to run the project, you have to write commands below in your console in project folder:*
