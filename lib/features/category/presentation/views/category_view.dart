@@ -3,10 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/core/app_colors.dart';
 import 'package:food_app/features/category/presentation/bloc/category_bloc.dart';
 import 'package:food_app/features/category/presentation/bloc/sorting_bloc/sorting_bloc.dart';
-import 'package:food_app/features/category/presentation/widgets/CategoryButton.dart';
-import 'package:food_app/features/category/presentation/widgets/app_bars/category_app_bar.dart';
-import 'package:food_app/features/category/presentation/widgets/grid_views/dish_grid_view.dart';
+import 'package:food_app/features/category/presentation/widgets/category_app_bar.dart';
+import 'package:food_app/features/category/presentation/widgets/category_button.dart';
+import 'package:food_app/features/category/presentation/widgets/dish_grid_view.dart';
 import 'package:food_app/features/shared/shimmer_list_view.dart';
+import 'package:food_app/generated/l10n.dart';
 
 class CategoryView extends StatefulWidget {
   const CategoryView({super.key});
@@ -23,10 +24,10 @@ class _CategoryViewState extends State<CategoryView> {
     final categoryBloc = context.watch<CategoryBloc>();
     final sortingBloc = context.watch<SortingBloc>();
     final categories = <String>[
-      'Все меню',
-      'С рисом',
-      'Салаты',
-      'С рыбой',
+      S.of(context).all,
+      S.of(context).rice,
+      S.of(context).salad,
+      S.of(context).fish,
     ];
 
     return Scaffold(
@@ -37,12 +38,12 @@ class _CategoryViewState extends State<CategoryView> {
           categoryBloc.add(const LoadCategory());
           return const SizedBox();
         },
-        loadingFailed: (_) => const Center(
+        loadingFailed: (_) => Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.error_outline),
-              Text('Ошибка получения данных.'),
+              const Icon(Icons.error_outline),
+              Text(S.of(context).gettingDataError),
             ],
           ),
         ),
@@ -59,7 +60,7 @@ class _CategoryViewState extends State<CategoryView> {
                     vertical: 10,
                   ),
                   scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) {
+                  itemBuilder: (_, index) {
                     return CategoryButton(
                       title: categories[index],
                       isPressed: sortingBloc.state.when(
@@ -72,7 +73,7 @@ class _CategoryViewState extends State<CategoryView> {
                     );
                   },
                   itemCount: 4,
-                  separatorBuilder: (BuildContext context, int index) {
+                  separatorBuilder: (_, __) {
                     return const SizedBox(width: 8);
                   },
                 ),

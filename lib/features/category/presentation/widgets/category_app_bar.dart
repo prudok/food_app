@@ -4,6 +4,7 @@ import 'package:food_app/core/app_colors.dart';
 import 'package:food_app/core/app_text_styles.dart';
 import 'package:food_app/core/asset_paths.dart';
 import 'package:food_app/features/shared/app_bar_avatar.dart';
+import 'package:food_app/generated/l10n.dart';
 
 class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CategoryAppBar({
@@ -25,7 +26,7 @@ class CategoryAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       centerTitle: true,
       title: Text(
-        'Азиатская кухня',
+        S.of(context).AsianFood,
         style: AppTextStyles.bodyBig.copyWith(color: AppColors.black),
       ),
     );

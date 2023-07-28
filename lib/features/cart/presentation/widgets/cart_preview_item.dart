@@ -58,7 +58,7 @@ class CartPreviewItem extends StatelessWidget {
             ),
           ],
         ),
-        Container(
+        DecoratedBox(
           decoration: BoxDecoration(
             color: AppColors.backgroundLightGrey,
             borderRadius: BorderRadius.circular(10),

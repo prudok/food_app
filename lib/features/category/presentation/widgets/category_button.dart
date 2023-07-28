@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/core/app_colors.dart';
 import 'package:food_app/core/app_text_styles.dart';
 import 'package:food_app/features/category/presentation/bloc/sorting_bloc/sorting_bloc.dart';
+import 'package:food_app/generated/l10n.dart';
 
 class CategoryButton extends StatelessWidget {
   const CategoryButton({
@@ -28,15 +29,14 @@ class CategoryButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        switch (title) {
-          case 'Все меню':
-            sortingBloc.add(const SortingEvent.all());
-          case 'Салаты':
-            sortingBloc.add(const SortingEvent.sortBySalad());
-          case 'С рисом':
-            sortingBloc.add(const SortingEvent.sortByRice());
-          case 'С рыбой':
-            sortingBloc.add(const SortingEvent.sortByFish());
+        if (title == S.of(context).all) {
+          sortingBloc.add(const SortingEvent.all());
+        } else if (title == S.of(context).salad) {
+          sortingBloc.add(const SortingEvent.sortBySalad());
+        } else if (title == S.of(context).rice) {
+          sortingBloc.add(const SortingEvent.sortByRice());
+        } else if (title == S.of(context).fish) {
+          sortingBloc.add(const SortingEvent.sortByFish());
         }
       },
       child: Text(

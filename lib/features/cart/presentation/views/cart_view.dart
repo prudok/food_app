@@ -5,6 +5,7 @@ import 'package:food_app/core/app_colors.dart';
 import 'package:food_app/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:food_app/features/cart/presentation/widgets/cart_preview_item.dart';
 import 'package:food_app/features/shared/home_app_bar.dart';
+import 'package:food_app/generated/l10n.dart';
 
 @RoutePage()
 class CartView extends StatelessWidget {
@@ -13,8 +14,8 @@ class CartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartBloc = context.watch<CartBloc>();
-    const Widget noItems = Center(
-      child: Text('Нет товаров.'),
+    final Widget noItems = Center(
+      child: Text(S.of(context).noItems),
     );
 
     return Scaffold(
@@ -32,13 +33,13 @@ class CartView extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.75,
+                      height: MediaQuery.of(context).size.height * 0.7,
                       child: ListView.separated(
                         itemCount: userCart.items.length,
-                        itemBuilder: (context, index) {
+                        itemBuilder: (_, index) {
                           return CartPreviewItem(item: userCart.items[index]);
                         },
-                        separatorBuilder: (BuildContext context, index) {
+                        separatorBuilder: (_, __) {
                           return const SizedBox(height: 10);
                         },
                       ),
@@ -55,7 +56,7 @@ class CartView extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'Оплатить ${cartBloc.calculateTotalSum()} р',
+                          S.of(context).totalSum(cartBloc.calculateTotalSum()),
                         ),
                       ),
                     ),

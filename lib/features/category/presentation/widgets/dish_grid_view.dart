@@ -7,6 +7,7 @@ import 'package:food_app/features/cart/domain/entities/user_cart_item.dart';
 import 'package:food_app/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:food_app/features/category/domain/entities/dish.dart';
 import 'package:food_app/features/category/domain/entities/dish_list.dart';
+import 'package:food_app/generated/l10n.dart';
 
 class DishGridVIew extends StatelessWidget {
   const DishGridVIew({required this.dishList, super.key});
@@ -29,7 +30,7 @@ class DishGridVIew extends StatelessWidget {
         mainAxisExtent: 150,
       ),
       itemCount: dishList.dishes.length,
-      itemBuilder: (BuildContext context, int index) {
+      itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
             showDialog(
@@ -223,8 +224,8 @@ class _DishAboutDialogState extends State<DishAboutDialog> {
                   ),
                 );
               },
-              child: const Text(
-                'Добавить в корзину',
+              child: Text(
+                S.of(context).addToCart,
               ),
             ),
           )

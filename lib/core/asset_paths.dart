@@ -1,4 +1,4 @@
-class AssetPaths {
+abstract class AssetPaths {
   static const location = 'assets/images/location.png';
   static const bag = 'assets/images/bag.png';
   static const home = 'assets/images/home.png';

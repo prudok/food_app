@@ -6,6 +6,7 @@ import 'package:food_app/features/home/presentation/bloc/home_bloc.dart';
 import 'package:food_app/features/home/presentation/widgets/category_list_view.dart';
 import 'package:food_app/features/shared/home_app_bar.dart';
 import 'package:food_app/features/shared/shimmer_list_view.dart';
+import 'package:food_app/generated/l10n.dart';
 
 @RoutePage()
 class HomeView extends StatefulWidget {
@@ -32,12 +33,12 @@ class _HomeViewState extends State<HomeView> {
         loaded: (categoryList) => CategoryListView(
           categoryList: categoryList,
         ),
-        loadingFailed: (_) => const Center(
+        loadingFailed: (_) => Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.error_outline),
-              Text('Ошбика получения данных.'),
+              const Icon(Icons.error_outline),
+              Text(S.of(context).gettingDataError),
             ],
           ),
         ),
