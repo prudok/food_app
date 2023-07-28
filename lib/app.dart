@@ -8,16 +8,12 @@ import 'package:food_app/features/category/presentation/bloc/category_bloc.dart'
 import 'package:food_app/features/category/presentation/bloc/sorting_bloc/sorting_bloc.dart';
 import 'package:food_app/features/home/presentation/bloc/home_bloc.dart';
 import 'package:food_app/generated/l10n.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
 class FoodApp extends StatelessWidget {
   const FoodApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    initializeDateFormatting();
-    getIt.setDependencies();
-
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt.get<HomeBloc>()),

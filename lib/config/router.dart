@@ -1,7 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:food_app/features/bottom_navigation/presentation/view_navigator.dart';
 import 'package:food_app/features/cart/presentation/views/cart_view.dart';
 import 'package:food_app/features/home/presentation/views/home_view.dart';
+import 'package:food_app/features/notifications/presentation/view/playground_view.dart';
 
 part 'router.gr.dart';
 
@@ -15,7 +18,9 @@ class AppRouter extends _$AppRouter {
           children: [
             AutoRoute(page: HomeRoute.page),
             AutoRoute(page: CartRoute.page),
+            AutoRoute(page: PlaygroundRoute.page),
           ],
         ),
+        AutoRoute(page: PlaygroundRoute.page),
       ];
 }
