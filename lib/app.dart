@@ -7,6 +7,7 @@ import 'package:food_app/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:food_app/features/category/presentation/bloc/category_bloc.dart';
 import 'package:food_app/features/category/presentation/bloc/sorting_bloc/sorting_bloc.dart';
 import 'package:food_app/features/home/presentation/bloc/home_bloc.dart';
+import 'package:food_app/features/notifications/presentation/bloc/notification_bloc.dart';
 import 'package:food_app/generated/l10n.dart';
 
 class FoodApp extends StatelessWidget {
@@ -17,16 +18,17 @@ class FoodApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt.get<HomeBloc>()),
-        BlocProvider(create: (context) => getIt.get<CategoryBloc>()),
         BlocProvider(create: (context) => getIt.get<CartBloc>()),
         BlocProvider(create: (context) => getIt.get<SortingBloc>()),
+        BlocProvider(create: (context) => getIt.get<CategoryBloc>()),
+        BlocProvider(create: (context) => getIt.get<NotificationBloc>()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         localizationsDelegates: const [
           S.delegate,
-          GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,

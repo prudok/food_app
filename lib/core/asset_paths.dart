@@ -8,4 +8,6 @@ abstract class AssetPaths {
   static const favorite = 'assets/images/favorite.png';
   static const close = 'assets/images/close.png';
   static const profile = 'assets/images/profile.jpeg';
+
+  static const androidNative = '@drawable/android_logo';
 }

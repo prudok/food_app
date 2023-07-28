@@ -12,6 +12,8 @@ import 'package:food_app/features/home/data/datasource/home_api_impl.dart';
 import 'package:food_app/features/home/data/repository/category_item_repository_impl.dart';
 import 'package:food_app/features/home/presentation/bloc/home_bloc.dart';
 import 'package:food_app/features/notifications/data/datasource/firebase_api_impl.dart';
+import 'package:food_app/features/notifications/data/repository/notification_repository_impl.dart';
+import 'package:food_app/features/notifications/presentation/bloc/notification_bloc.dart';
 
 class Injection {
   final Map<Type, Object?> getIt = {};
@@ -35,18 +37,20 @@ class Injection {
     put<FirebaseAPIImpl>(FirebaseAPIImpl(get<FirebaseMessaging>()));
 
     // Repositories
+    put<CategoryRepositoryImpl>(CategoryRepositoryImpl(get<DishAPIImpl>()));
     put<CategoryItemRepositoryImpl>(
       CategoryItemRepositoryImpl(get<HomeAPIImpl>()),
     );
-    put<CategoryRepositoryImpl>(
-      CategoryRepositoryImpl(get<DishAPIImpl>()),
+    put<NotificationRepositoryImpl>(
+      NotificationRepositoryImpl(get<FirebaseAPIImpl>()),
     );
 
     // Blocs
-    put<HomeBloc>(HomeBloc(get<CategoryItemRepositoryImpl>()));
-    put<CategoryBloc>(CategoryBloc(get<CategoryRepositoryImpl>()));
     put<CartBloc>(CartBloc());
     put<SortingBloc>(SortingBloc());
+    put<HomeBloc>(HomeBloc(get<CategoryItemRepositoryImpl>()));
+    put<CategoryBloc>(CategoryBloc(get<CategoryRepositoryImpl>()));
+    put<NotificationBloc>(NotificationBloc(get<NotificationRepositoryImpl>()));
 
     put<AppRouter>(AppRouter());
   }

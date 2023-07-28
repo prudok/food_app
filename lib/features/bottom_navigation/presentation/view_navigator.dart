@@ -12,11 +12,11 @@ class ViewNavigator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
-      routes: [
+      routes: const [
         HomeRoute(),
         HomeRoute(),
         CartRoute(),
-        PlaygroundRoute(message: null),
+        PlaygroundRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(

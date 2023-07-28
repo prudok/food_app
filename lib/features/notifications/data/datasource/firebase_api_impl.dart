@@ -3,31 +3,59 @@ import 'dart:convert';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:food_app/config/router.dart';
+import 'package:food_app/core/asset_paths.dart';
 import 'package:food_app/core/injection.dart';
 import 'package:food_app/features/notifications/data/datasource/firebase_api.dart';
-
-Future<void> handleBackgroundMessage(RemoteMessage message) async {}
 
 class FirebaseAPIImpl extends FirebaseAPI {
   FirebaseAPIImpl(this.firebaseMessaging);
 
   final FirebaseMessaging firebaseMessaging;
+  final _localNotifications = FlutterLocalNotificationsPlugin();
   final _androidChannel = const AndroidNotificationChannel(
     'high_importance_channel',
     'High Importance Notifications',
     description: 'This channel is used for important notifications',
   );
-  final _localNotifications = FlutterLocalNotificationsPlugin();
 
   @override
   Future<void> initNotifications() async {
     await firebaseMessaging.requestPermission();
-    await initPushNotifications();
-    await initLocalNotifications();
+    await _initPushNotifications();
+    await _initLocalNotifications();
   }
 
   @override
-  Future<void> initPushNotifications() async {
+  void handleMessage(RemoteMessage? message) {
+    if (message == null) {
+      return;
+    } else {
+      final notificationType = message.data['type'].toString();
+      final router = getIt.get<AppRouter>();
+      switch (notificationType) {
+        case 'now':
+          _localNotifications.show(
+            message.hashCode,
+            message.notification?.title,
+            message.notification?.body,
+            NotificationDetails(
+              android: AndroidNotificationDetails(
+                _androidChannel.id,
+                _androidChannel.name,
+                channelDescription: _androidChannel.description,
+                icon: AssetPaths.androidNative,
+              ),
+            ),
+          );
+        case 'playground':
+          router.push(const PlaygroundRoute());
+        default:
+          router.replace(const RouteNavigator());
+      }
+    }
+  }
+
+  Future<void> _initPushNotifications() async {
     await firebaseMessaging.setForegroundNotificationPresentationOptions(
       alert: true,
       badge: true,
@@ -35,7 +63,6 @@ class FirebaseAPIImpl extends FirebaseAPI {
     );
     await firebaseMessaging.getInitialMessage().then(handleMessage);
     FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
-    FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
     FirebaseMessaging.onMessage.listen((message) {
       final notification = message.notification;
       if (notification == null) return;
@@ -48,7 +75,7 @@ class FirebaseAPIImpl extends FirebaseAPI {
             _androidChannel.id,
             _androidChannel.name,
             channelDescription: _androidChannel.description,
-            icon: '@drawable/android_logo',
+            icon: AssetPaths.androidNative,
           ),
         ),
         payload: jsonEncode(message.toMap()),
@@ -56,15 +83,13 @@ class FirebaseAPIImpl extends FirebaseAPI {
     });
   }
 
-  @override
-  Future<void> initLocalNotifications() async {
+  Future<void> _initLocalNotifications() async {
     const iOS = DarwinInitializationSettings();
-    const android = AndroidInitializationSettings('@drawable/android_logo');
+    const android = AndroidInitializationSettings(AssetPaths.androidNative);
     const settings = InitializationSettings(android: android, iOS: iOS);
     await _localNotifications.initialize(
       settings,
       onDidReceiveNotificationResponse: (payload) {
-        // TODO(rel1nce): get info about casting dynamic variables
         final message = RemoteMessage.fromMap(
           jsonDecode(payload as String) as Map<String, dynamic>,
         );
@@ -74,11 +99,5 @@ class FirebaseAPIImpl extends FirebaseAPI {
     final platform = _localNotifications.resolvePlatformSpecificImplementation<
         AndroidFlutterLocalNotificationsPlugin>();
     await platform?.createNotificationChannel(_androidChannel);
-  }
-
-  @override
-  void handleMessage(RemoteMessage? message) {
-    if (message == null) return;
-    getIt.get<AppRouter>().push(PlaygroundRoute(message: message));
   }
 }
