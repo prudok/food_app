@@ -23,7 +23,7 @@ class FirebaseAPIImpl extends FirebaseAPI {
   Future<void> initNotifications() async {
     await firebaseMessaging.requestPermission();
     await initPushNotifications();
-    await initPushNotifications();
+    await initLocalNotifications();
   }
 
   @override
