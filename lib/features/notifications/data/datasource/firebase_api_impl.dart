@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:food_app/config/router.dart';
 import 'package:food_app/core/asset_paths.dart';
+import 'package:food_app/core/image_path_converter.dart';
 import 'package:food_app/core/injection.dart';
 import 'package:food_app/features/notifications/data/datasource/firebase_api.dart';
 
@@ -26,7 +27,7 @@ class FirebaseAPIImpl extends FirebaseAPI {
   }
 
   @override
-  void handleMessage(RemoteMessage? message) {
+  Future<void> handleMessage(RemoteMessage? message) async {
     if (message == null) {
       return;
     } else {
@@ -34,11 +35,17 @@ class FirebaseAPIImpl extends FirebaseAPI {
       final router = getIt.get<AppRouter>();
       switch (notificationType) {
         case 'now':
-          _localNotifications.show(
+          final iOSPathImage = await ImagePathConverter.getImageFromAssets(
+            AssetPaths.profile,
+          );
+          await _localNotifications.show(
             message.hashCode,
             message.notification?.title,
             message.notification?.body,
             NotificationDetails(
+              iOS: DarwinNotificationDetails(
+                attachments: [DarwinNotificationAttachment(iOSPathImage)],
+              ),
               android: AndroidNotificationDetails(
                 _androidChannel.id,
                 _androidChannel.name,
@@ -48,9 +55,9 @@ class FirebaseAPIImpl extends FirebaseAPI {
             ),
           );
         case 'playground':
-          router.push(const PlaygroundRoute());
+          await router.push(const PlaygroundRoute());
         default:
-          router.replace(const RouteNavigator());
+          await router.replace(const RouteNavigator());
       }
     }
   }
@@ -75,7 +82,6 @@ class FirebaseAPIImpl extends FirebaseAPI {
             _androidChannel.id,
             _androidChannel.name,
             channelDescription: _androidChannel.description,
-            icon: AssetPaths.androidNative,
           ),
         ),
         payload: jsonEncode(message.toMap()),

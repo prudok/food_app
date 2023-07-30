@@ -36,17 +36,21 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       userCart.items.removeWhere((element) => element.isEmpty);
       emit(_Updated(userCart: userCart));
     });
+
+    on<_EmptyCart>((event, emit) {
+      emit(const _Updating());
+      userCart = UserCart(items: []);
+      emit(_Updated(userCart: userCart));
+    });
   }
 
   UserCart userCart = UserCart(items: []);
 
   int calculateTotalSum() {
     var sum = 0;
-
     for (var ind = 0; ind < userCart.items.length; ++ind) {
       sum += userCart.items[ind][0].price * userCart.items[ind].length;
     }
-
     return sum;
   }
 }

@@ -8,4 +8,6 @@ class CartEvent with _$CartEvent {
 
   const factory CartEvent.removeFromCart({required UserCartItem item}) =
       _RemoveFromCart;
+
+  const factory CartEvent.emptyCart() = _EmptyCart;
 }

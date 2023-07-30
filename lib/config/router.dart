@@ -1,6 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
 import 'package:food_app/features/bottom_navigation/presentation/view_navigator.dart';
 import 'package:food_app/features/cart/presentation/views/cart_view.dart';
 import 'package:food_app/features/home/presentation/views/home_view.dart';
@@ -21,6 +19,5 @@ class AppRouter extends _$AppRouter {
             AutoRoute(page: PlaygroundRoute.page),
           ],
         ),
-        AutoRoute(page: PlaygroundRoute.page),
       ];
 }

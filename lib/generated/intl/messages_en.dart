@@ -37,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "locale": MessageLookupByLibrary.simpleMessage("en"),
         "noItems": MessageLookupByLibrary.simpleMessage("No Items."),
+        "notificationPlayground":
+            MessageLookupByLibrary.simpleMessage("Notification playground"),
         "rice": MessageLookupByLibrary.simpleMessage("Rice"),
         "salad": MessageLookupByLibrary.simpleMessage("Salad"),
         "totalSum": m0

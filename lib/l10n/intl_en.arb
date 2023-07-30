@@ -13,5 +13,6 @@
   "account": "Account",
   "AsianFood": "Asian Food",
   "totalSum": "Pay {totalSum} $",
-  "locale": "en"
+  "locale": "en",
+  "notificationPlayground": "Notification playground"
 }

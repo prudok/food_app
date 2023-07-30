@@ -11,8 +11,8 @@ class NotificationRepositoryImpl extends NotificationRepository {
   final _tmpRemoteMessage = const RemoteMessage(
     data: {'type': 'now'},
     notification: RemoteNotification(
-      title: 'Just Now Notification',
-      body: 'Lorem Ipsum Elgreda joema',
+      title: 'Order has been created!',
+      body: 'Your order has been transferred to our database.',
     ),
   );
 

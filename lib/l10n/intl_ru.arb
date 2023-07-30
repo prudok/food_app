@@ -13,5 +13,6 @@
   "account": "Аккаунт",
   "AsianFood": "Азиатская кухня",
   "totalSum": "Оплатить {totalSum} р",
-  "locale": "ru"
+  "locale": "ru",
+  "notificationPlayground": "Песочница уведомлений"
 }

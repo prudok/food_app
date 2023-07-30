@@ -37,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Главная"),
         "locale": MessageLookupByLibrary.simpleMessage("ru"),
         "noItems": MessageLookupByLibrary.simpleMessage("Нет товаров."),
+        "notificationPlayground":
+            MessageLookupByLibrary.simpleMessage("Песочница уведомлений"),
         "rice": MessageLookupByLibrary.simpleMessage("С рисом"),
         "salad": MessageLookupByLibrary.simpleMessage("Салаты"),
         "totalSum": m0

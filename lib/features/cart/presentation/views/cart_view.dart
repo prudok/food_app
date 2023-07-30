@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/core/app_colors.dart';
 import 'package:food_app/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:food_app/features/cart/presentation/widgets/cart_preview_item.dart';
+import 'package:food_app/features/notifications/presentation/bloc/notification_bloc.dart';
 import 'package:food_app/features/shared/home_app_bar.dart';
 import 'package:food_app/generated/l10n.dart';
 
@@ -14,6 +15,7 @@ class CartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartBloc = context.watch<CartBloc>();
+    final notificationBloc = context.watch<NotificationBloc>();
     final Widget noItems = Center(
       child: Text(S.of(context).noItems),
     );
@@ -48,7 +50,12 @@ class CartView extends StatelessWidget {
                       width: double.infinity,
                       height: 50,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          notificationBloc.add(
+                            const NotificationEvent.setNow(),
+                          );
+                          cartBloc.add(const CartEvent.emptyCart());
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.blue,
                           shape: RoundedRectangleBorder(

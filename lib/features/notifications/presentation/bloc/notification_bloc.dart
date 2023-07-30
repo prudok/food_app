@@ -3,7 +3,9 @@ import 'package:food_app/features/notifications/data/repository/notification_rep
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'notification_bloc.freezed.dart';
+
 part 'notification_event.dart';
+
 part 'notification_state.dart';
 
 class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {

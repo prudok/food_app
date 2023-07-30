@@ -199,6 +199,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Notification playground`
+  String get notificationPlayground {
+    return Intl.message(
+      'Notification playground',
+      name: 'notificationPlayground',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
