@@ -1,6 +1,5 @@
+import 'package:food_app/features/home/domain/entities/category_item.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import 'category_item.dart';
 
 part 'category_list.freezed.dart';
 part 'category_list.g.dart';

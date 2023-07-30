@@ -18,12 +18,12 @@ class NotificationRepositoryImpl extends NotificationRepository {
 
   @override
   Future<void> getNotification() async {
-    firebaseAPIImpl.handleMessage(_tmpRemoteMessage);
+    await firebaseAPIImpl.handleMessage(_tmpRemoteMessage);
   }
 
   @override
   Future<void> setNotificationByTime() async {
-    await Future.delayed(const Duration(seconds: 5));
-    firebaseAPIImpl.handleMessage(_tmpRemoteMessage);
+    await Future<void>.delayed(const Duration(seconds: 5));
+    await firebaseAPIImpl.handleMessage(_tmpRemoteMessage);
   }
 }

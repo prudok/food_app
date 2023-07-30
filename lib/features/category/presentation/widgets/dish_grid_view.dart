@@ -33,7 +33,7 @@ class DishGridVIew extends StatelessWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
-            showDialog(
+            showDialog<void>(
               context: context,
               builder: (_) {
                 return DishAboutDialog(

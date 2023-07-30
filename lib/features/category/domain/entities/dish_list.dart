@@ -11,5 +11,6 @@ class DishList with _$DishList {
     required List<Dish> dishes,
   }) = _DishList;
 
-  factory DishList.fromJson(Map<String, Object?> json) => _$DishListFromJson(json);
+  factory DishList.fromJson(Map<String, Object?> json) =>
+      _$DishListFromJson(json);
 }
