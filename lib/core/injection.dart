@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:food_app/config/router.dart';
+import 'package:food_app/core/exception_handler.dart';
 import 'package:food_app/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:food_app/features/category/data/datasource/dish_api.dart';
 import 'package:food_app/features/category/data/datasource/dish_api_impl.dart';
@@ -24,6 +25,9 @@ class Injection {
 
   void setDependencies() {
     put<Dio>(Dio());
+
+    // Exception center, every exception'll be transferred there
+    put<ExceptionHandler>(ExceptionHandler());
 
     // Firebase dependencies
     put<FirebaseMessaging>(FirebaseMessaging.instance);
