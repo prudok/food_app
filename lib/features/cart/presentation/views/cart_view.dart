@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_app/core/app_colors.dart';
+import 'package:food_app/core/core.dart';
 import 'package:food_app/features/cart/presentation/bloc/cart_bloc.dart';
-import 'package:food_app/features/cart/presentation/widgets/cart_preview_item.dart';
+import 'package:food_app/features/cart/presentation/widgets/widgets.dart';
 import 'package:food_app/features/notifications/presentation/bloc/notification_bloc.dart';
-import 'package:food_app/features/shared/home_app_bar.dart';
+import 'package:food_app/features/shared/shared.dart';
 import 'package:food_app/generated/l10n.dart';
 
 @RoutePage()

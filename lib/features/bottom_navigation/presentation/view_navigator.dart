@@ -1,8 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/config/router.dart';
-import 'package:food_app/core/app_colors.dart';
-import 'package:food_app/core/asset_paths.dart';
+import 'package:food_app/core/core.dart';
 import 'package:food_app/generated/l10n.dart';
 
 @RoutePage()

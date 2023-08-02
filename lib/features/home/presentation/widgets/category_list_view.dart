@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/features/home/domain/entities/category_list.dart';
-import 'package:food_app/features/home/presentation/widgets/category_tile.dart';
+import 'package:food_app/features/home/presentation/widgets/widgets.dart';
 
 class CategoryListView extends StatelessWidget {
   const CategoryListView({required this.categoryList, super.key});

@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:food_app/core/app_text_styles.dart';
-import 'package:food_app/features/category/presentation/views/category_view.dart';
+import 'package:food_app/core/core.dart';
+import 'package:food_app/features/category/category.dart';
 
 class CategoryTile extends StatelessWidget {
   const CategoryTile({required this.imageUrl, required this.name, super.key});
